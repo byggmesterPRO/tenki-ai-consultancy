@@ -12,6 +12,7 @@
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
+    "@lottiefiles/dotlottie-react": "^0.17.14",
     "bcryptjs": "^3.0.2",
     "date-fns": "^4.1.0",
     "firebase": "^12.9.0",

@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const Hero: React.FC = () => {
   return (
@@ -12,51 +13,72 @@ const Hero: React.FC = () => {
       <div className="absolute bottom-20 left-10 w-64 h-64 bg-tenki-accent/5 rounded-full blur-3xl -z-10" />
 
       <div className="container mx-auto px-6 md:px-12">
-        <div className="max-w-4xl">
-          <motion.p
-             initial={{ opacity: 0, y: 20 }}
-             animate={{ opacity: 1, y: 0 }}
-             transition={{ duration: 0.8, delay: 0.2 }}
-             className="text-tenki-accent font-sans uppercase tracking-widest text-sm mb-6 font-medium"
-          >
-            Intelligent Automation
-          </motion.p>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.1] text-tenki-text mb-8"
-          >
-            Unlocking <br className="hidden md:block" />
-            intelligence.
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="font-sans text-lg md:text-xl text-tenki-muted max-w-2xl leading-relaxed mb-12"
-          >
-            Tenki helps forward-thinking companies build resilience through practical AI integration. We replace hype with systems that work.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col sm:flex-row gap-6 items-start sm:items-center"
-          >
-            <a
-              href="/contact"
-              className="group flex items-center gap-3 bg-tenki-text text-white px-8 py-4 rounded-full font-sans text-sm tracking-wide transition-all hover:bg-tenki-accent hover:shadow-lg"
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Text content */}
+          <div>
+            <motion.p
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.8, delay: 0.2 }}
+               className="text-tenki-accent font-sans uppercase tracking-widest text-sm mb-6 font-medium"
             >
-              Start the Conversation
-              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-            </a>
-            <span className="text-tenki-muted text-sm font-sans">
-              Established 2025 · Accepting new partnerships
-            </span>
+              Intelligent Automation
+            </motion.p>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
+              className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.1] text-tenki-text mb-8"
+            >
+              Unlocking <br className="hidden md:block" />
+              intelligence.
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
+              className="font-sans text-lg md:text-xl text-tenki-muted max-w-2xl leading-relaxed mb-12"
+            >
+              Tenki helps forward-thinking companies build resilience through practical AI integration. We replace hype with systems that work.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+              className="flex flex-col sm:flex-row gap-6 items-start sm:items-center"
+            >
+              <a
+                href="/contact"
+                className="group flex items-center gap-3 bg-tenki-text text-white px-8 py-4 rounded-full font-sans text-sm tracking-wide transition-all hover:bg-tenki-accent hover:shadow-lg"
+              >
+                Start the Conversation
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </a>
+              <span className="text-tenki-muted text-sm font-sans">
+                Established 2025 · Accepting new partnerships
+              </span>
+            </motion.div>
+          </div>
+
+          {/* Lottie Animation */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
+            className="hidden lg:flex items-center justify-center"
+          >
+            <div className="w-full max-w-lg [&_svg_path]:!stroke-tenki-text [&_svg_circle]:!stroke-tenki-accent [&_svg_rect]:!stroke-tenki-muted"
+              style={{ filter: 'sepia(0.15) saturate(0.8)' }}
+            >
+              <DotLottieReact
+                src="/lottie/business workshop.lottie"
+                loop
+                autoplay
+              />
+            </div>
           </motion.div>
         </div>
       </div>
