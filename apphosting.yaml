@@ -1,0 +1,19 @@
+runConfig:
+  runtime: nodejs20
+  concurrency: 80
+  cpu: 1
+  memoryMiB: 512
+  minInstances: 0
+  maxInstances: 2
+
+env:
+  - variable: NEXTAUTH_SECRET
+    secret: NEXTAUTH_SECRET
+  - variable: FIREBASE_PROJECT_ID
+    value: straight-data
+  - variable: FIREBASE_CLIENT_EMAIL
+    secret: FIREBASE_CLIENT_EMAIL
+  - variable: FIREBASE_PRIVATE_KEY
+    secret: FIREBASE_PRIVATE_KEY
+  - variable: NEXTAUTH_URL
+    value: https://tenki.no
