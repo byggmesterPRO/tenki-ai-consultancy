@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import { Crimson_Pro, Inter, Instrument_Serif } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const crimsonPro = Crimson_Pro({
   subsets: ["latin"],
-  variable: "--font-serif",
+  variable: "--font-crimson",
   weight: ["300", "400", "600"],
   style: ["normal", "italic"],
 });
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-inter",
   weight: ["300", "400", "500", "600"],
 });
 
@@ -22,14 +23,17 @@ const instrumentSerif = Instrument_Serif({
   style: ["normal", "italic"],
 });
 
-// For the Ogg font: place Ogg-Bold.woff2 in public/assets/fonts/
-// The CSS variable --font-ogg will use Instrument Serif as fallback
-const oggFallbackVar = "--font-ogg";
+const oggBold = localFont({
+  src: "../../public/fonts/Ogg Ogg Bold.ttf",
+  variable: "--font-ogg-bold",
+  weight: "700",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Tenki | AI Consultancy",
   description:
-    "Tenki helps forward-thinking companies build resilience through practical AI integration. We replace hype with systems that work.",
+    "Unlocking intelligence. Tenki helps forward-thinking companies build resilience through practical AI integration.",
 };
 
 export default function RootLayout({
@@ -40,27 +44,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${crimsonPro.variable} ${inter.variable} ${instrumentSerif.variable}`}
+      className={`${crimsonPro.variable} ${inter.variable} ${instrumentSerif.variable} ${oggBold.variable}`}
     >
-      <head>
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-              @font-face {
-                font-family: 'Ogg';
-                src: url('/assets/fonts/Ogg-Bold.woff2') format('woff2'),
-                     url('/assets/fonts/Ogg-Bold.woff') format('woff');
-                font-weight: 700;
-                font-style: normal;
-                font-display: swap;
-              }
-              :root {
-                ${oggFallbackVar}: 'Ogg', var(--font-instrument), serif;
-              }
-            `,
-          }}
-        />
-      </head>
       <body className="font-sans antialiased text-tenki-text bg-tenki-bg selection:bg-tenki-accent/20 selection:text-tenki-text">
         {children}
       </body>

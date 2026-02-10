@@ -4,7 +4,8 @@ import { Network, Cpu, LineChart, ShieldCheck } from 'lucide-react';
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Philosophy', href: '/philosophy' },
   { label: 'Services', href: '/services' },
-  { label: 'Approach', href: '/approach' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];
 

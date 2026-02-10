@@ -2,27 +2,90 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { Mail, Phone, ArrowUpRight } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-tenki-text py-12 text-stone-400 font-sans text-sm">
-      <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="text-center md:text-left">
-          <Link href="/" className="flex items-center gap-2 justify-center md:justify-start mb-2 group">
-            <img
-              src="/assets/images/logo.png"
-              alt="Tenki logo"
-              className="h-6 w-6 object-contain invert opacity-80 group-hover:opacity-100 transition-opacity"
-            />
-            <span className="font-ogg text-xl font-bold text-stone-100">tenki</span>
-          </Link>
-          <p>&copy; {new Date().getFullYear()} Tenki Consulting. All rights reserved.</p>
-        </div>
+    <footer className="bg-tenki-text text-stone-400 font-sans">
+      {/* Main Footer */}
+      <div className="container mx-auto px-6 md:px-12 py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
 
-        <div className="flex gap-8">
-          <a href="#" className="hover:text-tenki-accent transition-colors">LinkedIn</a>
-          <Link href="/privacy" className="hover:text-tenki-accent transition-colors">Privacy Policy</Link>
-          <Link href="/impressum" className="hover:text-tenki-accent transition-colors">Impressum</Link>
+          {/* Brand Column */}
+          <div className="lg:col-span-1">
+            <Link href="/" className="flex items-center gap-3 mb-6 group">
+              <img
+                src="/images/logo.svg"
+                alt="Tenki logo"
+                className="h-8 w-8 object-contain invert opacity-80 group-hover:opacity-100 transition-opacity"
+              />
+              <span className="font-ogg text-2xl font-bold text-stone-100">tenki</span>
+            </Link>
+            <p className="text-stone-400 text-sm leading-relaxed mb-6 max-w-xs">
+              Unlocking intelligence. We help forward-thinking companies build resilience through practical AI integration.
+            </p>
+            <p className="text-stone-500 text-xs">Established 2025</p>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <h4 className="text-stone-200 font-medium text-sm uppercase tracking-widest mb-6">Navigate</h4>
+            <ul className="space-y-3 text-sm">
+              <li><Link href="/philosophy" className="hover:text-tenki-accent transition-colors">Philosophy</Link></li>
+              <li><Link href="/services" className="hover:text-tenki-accent transition-colors">Services</Link></li>
+              <li><Link href="/approach" className="hover:text-tenki-accent transition-colors">Our Approach</Link></li>
+              <li><Link href="/projects" className="hover:text-tenki-accent transition-colors">Projects</Link></li>
+              <li><Link href="/blog" className="hover:text-tenki-accent transition-colors">Blog</Link></li>
+              <li><Link href="/contact" className="hover:text-tenki-accent transition-colors">Contact</Link></li>
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h4 className="text-stone-200 font-medium text-sm uppercase tracking-widest mb-6">Legal</h4>
+            <ul className="space-y-3 text-sm">
+              <li><Link href="/privacy" className="hover:text-tenki-accent transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="hover:text-tenki-accent transition-colors">Terms of Service</Link></li>
+              <li><Link href="/cookies" className="hover:text-tenki-accent transition-colors">Cookie Policy</Link></li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="text-stone-200 font-medium text-sm uppercase tracking-widest mb-6">Get in Touch</h4>
+            <ul className="space-y-4 text-sm">
+              <li>
+                <a href="mailto:hei@tenki.no" className="flex items-center gap-3 hover:text-tenki-accent transition-colors">
+                  <Mail size={16} strokeWidth={1.5} />
+                  hei@tenki.no
+                </a>
+              </li>
+              <li>
+                <a href="tel:+4746135537" className="flex items-center gap-3 hover:text-tenki-accent transition-colors">
+                  <Phone size={16} strokeWidth={1.5} />
+                  +47 461 35 537
+                </a>
+              </li>
+              <li>
+                <a href="https://tenki.no" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-tenki-accent transition-colors">
+                  <ArrowUpRight size={16} strokeWidth={1.5} />
+                  tenki.no
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-stone-800">
+        <div className="container mx-auto px-6 md:px-12 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-stone-500">
+          <p>&copy; {new Date().getFullYear()} Tenki. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <p>Norway</p>
+            <Link href="/admin/login" className="hover:text-stone-400 transition-colors">Admin</Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -36,7 +36,7 @@ export default function AdminLoginPage() {
         <div className="text-center mb-12">
           <a href="/" className="inline-flex items-center gap-3 mb-8">
             <img
-              src="/assets/images/logo.png"
+              src="/images/logo.svg"
               alt="Tenki"
               className="h-10 w-10 object-contain"
             />

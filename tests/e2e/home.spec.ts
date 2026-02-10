@@ -30,7 +30,7 @@ test.describe("Home Page", () => {
     await page.goto("/");
 
     await expect(
-      page.getByText("Clarity in a complex world.")
+      page.getByText("Unlocking intelligence.")
     ).toBeVisible();
     await expect(
       page.getByText("Start the Conversation")
@@ -43,6 +43,6 @@ test.describe("Home Page", () => {
     const footer = page.locator("footer");
     await expect(footer).toBeVisible();
     await expect(footer.getByText("Privacy Policy")).toBeVisible();
-    await expect(footer.getByText("Impressum")).toBeVisible();
+    await expect(footer.getByText("Terms of Service")).toBeVisible();
   });
 });

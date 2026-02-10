@@ -4,9 +4,11 @@ const publicPages = [
   { path: "/philosophy", title: /Philosophy/i, heading: /Beyond the/i },
   { path: "/services", title: /Services/i, heading: /Precision tools/i },
   { path: "/approach", title: /Approach/i, heading: /Tenki Method/i },
+  { path: "/projects", title: /Projects/i, heading: /Our Work/i },
   { path: "/contact", title: /Contact/i, heading: /Ready to optimize/i },
   { path: "/privacy", title: /Privacy/i, heading: /Privacy Policy/i },
-  { path: "/impressum", title: /Impressum/i, heading: /Impressum/i },
+  { path: "/terms", title: /Terms/i, heading: /Terms of Service/i },
+  { path: "/cookies", title: /Cookie/i, heading: /Cookie Policy/i },
 ];
 
 test.describe("Page Navigation", () => {
@@ -48,7 +50,7 @@ test.describe("Page Navigation", () => {
     await expect(page).toHaveURL("/privacy");
 
     await page.goto("/");
-    await page.locator("footer").getByText("Impressum").click();
-    await expect(page).toHaveURL("/impressum");
+    await page.locator("footer").getByText("Terms of Service").click();
+    await expect(page).toHaveURL("/terms");
   });
 });

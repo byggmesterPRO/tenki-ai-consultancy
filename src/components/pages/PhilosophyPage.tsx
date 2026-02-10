@@ -86,7 +86,7 @@ const PhilosophyPage: React.FC = () => {
               </h2>
               <div className="w-12 h-[2px] bg-tenki-text/10 mb-6"></div>
               <p className="font-sans text-sm tracking-widest uppercase text-tenki-muted">
-                Established 2023
+                Established 2025
               </p>
             </Reveal>
           </div>

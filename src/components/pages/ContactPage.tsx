@@ -63,7 +63,7 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="font-sans font-semibold text-tenki-text mb-1">Email</h3>
-                    <p className="text-tenki-muted">hello@tenki.ai</p>
+                    <p className="text-tenki-muted"><a href="mailto:hei@tenki.no" className="hover:text-tenki-accent transition-colors">hei@tenki.no</a></p>
                   </div>
                 </div>
 
@@ -73,7 +73,7 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="font-sans font-semibold text-tenki-text mb-1">Phone</h3>
-                    <p className="text-tenki-muted">+49 (0) 30 1234 5678</p>
+                    <p className="text-tenki-muted"><a href="tel:+4746135537" className="hover:text-tenki-accent transition-colors">+47 461 35 537</a></p>
                   </div>
                 </div>
 
@@ -82,8 +82,8 @@ const ContactPage: React.FC = () => {
                     <MapPin className="w-5 h-5" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h3 className="font-sans font-semibold text-tenki-text mb-1">Office</h3>
-                    <p className="text-tenki-muted">Friedrichstraße 12<br />10117 Berlin, Germany</p>
+                    <h3 className="font-sans font-semibold text-tenki-text mb-1">Web</h3>
+                    <p className="text-tenki-muted"><a href="https://tenki.no" target="_blank" rel="noopener noreferrer" className="hover:text-tenki-accent transition-colors">tenki.no</a></p>
                   </div>
                 </div>
               </div>

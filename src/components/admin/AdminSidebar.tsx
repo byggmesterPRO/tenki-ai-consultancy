@@ -31,7 +31,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ user }) => {
       <div className="p-6 border-b border-stone-100">
         <Link href="/admin" className="flex items-center gap-3">
           <img
-            src="/assets/images/logo.png"
+            src="/images/logo.svg"
             alt="Tenki"
             className="h-7 w-7 object-contain"
           />

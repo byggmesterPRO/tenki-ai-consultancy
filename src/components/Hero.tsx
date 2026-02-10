@@ -28,8 +28,8 @@ const Hero: React.FC = () => {
             transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.1] text-tenki-text mb-8"
           >
-            Clarity in a <br className="hidden md:block" />
-            complex world.
+            Unlocking <br className="hidden md:block" />
+            intelligence.
           </motion.h1>
 
           <motion.p
@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </a>
             <span className="text-tenki-muted text-sm font-sans">
-              Accepting new partnerships for Q4 2024
+              Established 2025 · Accepting new partnerships
             </span>
           </motion.div>
         </div>

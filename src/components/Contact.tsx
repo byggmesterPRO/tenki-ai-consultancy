@@ -31,9 +31,9 @@ const Contact: React.FC = () => {
               </p>
 
               <div className="space-y-4 font-sans text-tenki-text">
-                <p>hello@tenki.ai</p>
-                <p>+49 (0) 30 1234 5678</p>
-                <p className="text-tenki-muted">Friedrichstraße 12, Berlin</p>
+                <p><a href="mailto:hei@tenki.no" className="hover:text-tenki-accent transition-colors">hei@tenki.no</a></p>
+                <p><a href="tel:+4746135537" className="hover:text-tenki-accent transition-colors">+47 461 35 537</a></p>
+                <p className="text-tenki-muted">tenki.no</p>
               </div>
             </Reveal>
           </div>
