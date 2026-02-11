@@ -3,6 +3,13 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.lottie$/,
+      type: "asset/resource",
+    });
+    return config;
+  },
   images: {
     remotePatterns: [
       {

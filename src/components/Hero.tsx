@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import educationLottie from '@/assets/lottie/education.lottie';
 
 const Hero: React.FC = () => {
   return (
@@ -74,7 +75,7 @@ const Hero: React.FC = () => {
               className="w-full scale-[1.8] sm:scale-[1.9] lg:scale-[1.875] origin-center [&_canvas]:!bg-transparent"
             >
               <DotLottieReact
-                src="/lottie/Education.lottie"
+                src={educationLottie}
                 loop
                 autoplay
                 speed={0.25}
