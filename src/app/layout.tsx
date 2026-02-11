@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Crimson_Pro, Inter, Instrument_Serif } from "next/font/google";
 import localFont from "next/font/local";
 import SmoothScroll from "@/components/SmoothScroll";
+import favicon16 from "@/assets/favicons/favicon-16x16.png";
+import favicon32 from "@/assets/favicons/favicon-32x32.png";
+import appleTouchIcon from "@/assets/favicons/apple-touch-icon.png";
 import "./globals.css";
 
 const crimsonPro = Crimson_Pro({
@@ -25,7 +28,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 const oggBold = localFont({
-  src: "../../public/fonts/Ogg Ogg Bold.ttf",
+  src: "../assets/fonts/ogg-bold.ttf",
   variable: "--font-ogg-bold",
   weight: "700",
   display: "swap",
@@ -37,17 +40,13 @@ export const metadata: Metadata = {
     "Unlocking intelligence. Tenki helps forward-thinking companies build resilience through practical AI integration.",
   icons: {
     icon: [
-      { url: "/favicons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: favicon16.src, sizes: "16x16", type: "image/png" },
+      { url: favicon32.src, sizes: "32x32", type: "image/png" },
     ],
     apple: [
-      { url: "/favicons/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-    other: [
-      { rel: "manifest", url: "/favicons/site.webmanifest" },
+      { url: appleTouchIcon.src, sizes: "180x180", type: "image/png" },
     ],
   },
-  manifest: "/favicons/site.webmanifest",
 };
 
 export default function RootLayout({
