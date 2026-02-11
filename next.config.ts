@@ -4,10 +4,17 @@ const nextConfig: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
   webpack(config) {
-    config.module.rules.push({
-      test: /\.lottie$/,
-      type: "asset/resource",
-    });
+    config.module.rules.push(
+      {
+        test: /\.lottie$/,
+        type: "asset/resource",
+      },
+      {
+        test: /\.svg$/,
+        include: /src[\\/]assets/,
+        type: "asset/resource",
+      },
+    );
     return config;
   },
   images: {

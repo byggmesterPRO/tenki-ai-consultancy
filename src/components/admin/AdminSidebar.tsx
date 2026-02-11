@@ -11,6 +11,7 @@ import {
   ExternalLink,
   LogOut,
 } from "lucide-react";
+import logoSvg from "@/assets/images/logo.svg";
 
 const navItems = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
@@ -31,7 +32,7 @@ const AdminSidebar: React.FC<AdminSidebarProps> = ({ user }) => {
       <div className="p-6 border-b border-stone-100">
         <Link href="/admin" className="flex items-center gap-3">
           <img
-            src="/images/logo.svg"
+            src={logoSvg}
             alt="Tenki"
             className="h-7 w-7 object-contain"
           />

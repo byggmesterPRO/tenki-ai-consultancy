@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import logoSvg from '@/assets/images/logo.svg';
 
 const NAV_LINKS = [
   { label: 'Philosophy', href: '/philosophy' },
@@ -44,7 +45,7 @@ const Header: React.FC = () => {
         <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-4 group">
             <img
-              src="/images/logo.svg"
+              src={logoSvg}
               alt="Tenki logo"
               className="h-12 w-12 object-contain transition-transform duration-300 group-hover:scale-105"
             />

@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Mail, Phone, ArrowUpRight } from 'lucide-react';
+import logoSvg from '@/assets/images/logo.svg';
 
 const Footer: React.FC = () => {
   return (
@@ -15,7 +16,7 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6 group">
               <img
-                src="/images/logo.svg"
+                src={logoSvg}
                 alt="Tenki logo"
                 className="h-8 w-8 object-contain invert opacity-80 group-hover:opacity-100 transition-opacity"
               />

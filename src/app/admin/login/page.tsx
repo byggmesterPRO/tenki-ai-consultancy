@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import logoSvg from "@/assets/images/logo.svg";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -41,7 +42,7 @@ export default function AdminLoginPage() {
         <div className="text-center mb-12">
           <a href="/" className="inline-flex items-center gap-3 mb-8">
             <img
-              src="/images/logo.svg"
+              src={logoSvg}
               alt="Tenki"
               className="h-10 w-10 object-contain"
             />
