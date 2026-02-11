@@ -29,7 +29,7 @@ dist
 *.sw?
 
 # Source assets (originals kept outside repo)
-assets/
+/assets/
 
 # OS
 .DS_Store
