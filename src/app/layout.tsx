@@ -10,14 +10,16 @@ import "./globals.css";
 const crimsonPro = Crimson_Pro({
   subsets: ["latin"],
   variable: "--font-crimson",
-  weight: ["300", "400", "600"],
+  weight: ["400", "600"],
   style: ["normal", "italic"],
+  display: "swap",
 });
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 const instrumentSerif = Instrument_Serif({
@@ -25,6 +27,7 @@ const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument",
   weight: "400",
   style: ["normal", "italic"],
+  display: "swap",
 });
 
 const oggBold = localFont({

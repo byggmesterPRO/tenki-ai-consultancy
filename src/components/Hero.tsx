@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import LazyLottie from '@/components/ui/LazyLottie';
 import educationLottie from '@/assets/lottie/education.lottie';
 
 const Hero: React.FC = () => {
@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
             <div
               className="w-full scale-[1.8] sm:scale-[1.9] lg:scale-[1.875] origin-center [&_canvas]:!bg-transparent"
             >
-              <DotLottieReact
+              <LazyLottie
                 src={educationLottie}
                 loop
                 autoplay

@@ -3,7 +3,7 @@
 import React from 'react';
 import { Reveal } from '@/components/ui/Reveal';
 import { ArrowRight } from 'lucide-react';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import LazyLottie from '@/components/ui/LazyLottie';
 import revenueLottie from '@/assets/lottie/revenue.lottie';
 import Link from 'next/link';
 
@@ -38,7 +38,7 @@ const PricingPromise: React.FC = () => {
                 style={{ filter: 'brightness(1.1) saturate(0.8)' }}
               >
                 <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-full scale-150 sm:scale-125 md:scale-110 lg:scale-110 origin-center">
-                  <DotLottieReact
+                  <LazyLottie
                     src={revenueLottie}
                     loop
                     autoplay

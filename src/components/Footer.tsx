@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, Phone, ArrowUpRight } from 'lucide-react';
 import logoSvg from '@/assets/images/logo.svg';
 
@@ -15,10 +16,12 @@ const Footer: React.FC = () => {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6 group">
-              <img
+              <Image
                 src={logoSvg}
                 alt="Tenki logo"
-                className="h-8 w-8 object-contain invert opacity-80 group-hover:opacity-100 transition-opacity"
+                width={32}
+                height={32}
+                className="object-contain invert opacity-80 group-hover:opacity-100 transition-opacity"
               />
               <span className="font-ogg text-2xl font-bold text-stone-100">tenki</span>
             </Link>
