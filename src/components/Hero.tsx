@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
               className="w-full scale-[1.8] sm:scale-[1.9] lg:scale-[1.875] origin-center [&_canvas]:!bg-transparent"
             >
               <DotLottieReact
-                src="/lottie/education.lottie"
+                src="/lottie/Education.lottie"
                 loop
                 autoplay
                 speed={0.25}
