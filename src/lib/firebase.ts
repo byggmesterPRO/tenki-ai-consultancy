@@ -8,7 +8,6 @@ const firebaseConfig = {
   storageBucket: "straight-data.firebasestorage.app",
   messagingSenderId: "526526702616",
   appId: "1:526526702616:web:bd8448f65140505bdc0f6d",
-  measurementId: "G-33YBP4ZEHD",
 };
 
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];

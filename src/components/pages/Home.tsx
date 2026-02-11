@@ -8,10 +8,9 @@ import Studies from '@/components/Studies';
 import Approach from '@/components/Approach';
 import TestimonialSection from '@/components/Testimonial';
 import PricingPromise from '@/components/PricingPromise';
-import BlogPreview from '@/components/BlogPreview';
 import Contact from '@/components/Contact';
 
-const Home: React.FC = () => {
+const Home: React.FC<{ blogPreview?: React.ReactNode }> = ({ blogPreview }) => {
   return (
     <>
       <Hero />
@@ -21,7 +20,7 @@ const Home: React.FC = () => {
       <Approach />
       <TestimonialSection />
       <PricingPromise />
-      <BlogPreview />
+      {blogPreview}
       <Contact />
     </>
   );

@@ -1,11 +1,17 @@
-"use client";
-
 import React from 'react';
 import Link from 'next/link';
 import { Reveal } from '@/components/ui/Reveal';
 import { ArrowRight, Newspaper } from 'lucide-react';
+import { getPosts } from '@/lib/db';
 
-const BlogPreview: React.FC = () => {
+function formatDate(dateStr: string) {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+}
+
+const BlogPreview = async () => {
+  const { posts } = await getPosts({ published: true, limit: 3 });
+
   return (
     <section className="py-24 md:py-32 bg-stone-50">
       <div className="container mx-auto px-6 md:px-12">
@@ -33,31 +39,12 @@ const BlogPreview: React.FC = () => {
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: 'How AI is Reshaping Knowledge Work',
-              excerpt: 'MIT researchers found that AI-assisted workers complete writing tasks 40% faster. Here\'s what that means for your team.',
-              category: 'Research',
-              date: 'Jan 2025',
-            },
-            {
-              title: 'The Real ROI of AI Integration',
-              excerpt: 'Beyond the hype: practical frameworks for measuring the actual return on your AI investments.',
-              category: 'Strategy',
-              date: 'Dec 2024',
-            },
-            {
-              title: 'Building AI Systems That Last',
-              excerpt: 'Why sustainable AI infrastructure matters more than rapid deployment, and how to get it right from day one.',
-              category: 'Engineering',
-              date: 'Nov 2024',
-            },
-          ].map((post, i) => (
-            <Reveal key={post.title} delay={i * 0.1}>
-              <Link href="/blog" className="group block bg-white rounded-2xl p-8 border border-stone-100 hover:border-tenki-accent/30 hover:shadow-md transition-all duration-300 h-full">
+          {posts.map((post, i) => (
+            <Reveal key={post.id} delay={i * 0.1}>
+              <Link href={`/blog/${post.slug}`} className="group block bg-white rounded-2xl p-8 border border-stone-100 hover:border-tenki-accent/30 hover:shadow-md transition-all duration-300 h-full">
                 <div className="flex items-center gap-3 mb-4 text-xs font-sans">
-                  <span className="text-tenki-accent font-medium uppercase tracking-widest">{post.category}</span>
-                  <span className="text-tenki-muted">{post.date}</span>
+                  <span className="text-tenki-accent font-medium uppercase tracking-widest">{post.categoryName}</span>
+                  <span className="text-tenki-muted">{post.publishedAt ? formatDate(post.publishedAt) : ''}</span>
                 </div>
                 <h3 className="font-serif text-xl md:text-2xl text-tenki-text mb-3 group-hover:text-tenki-accent transition-colors leading-tight">
                   {post.title}

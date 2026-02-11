@@ -7,13 +7,13 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pt-20 pb-32 lg:pb-0 overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-stone-200/30 to-transparent -z-10" />
       <div className="absolute bottom-20 left-10 w-64 h-64 bg-tenki-accent/5 rounded-full blur-3xl -z-10" />
 
       <div className="container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0 items-center">
           {/* Text content */}
           <div>
             <motion.p
@@ -63,20 +63,21 @@ const Hero: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Lottie Animation */}
+          {/* Lottie Animation — equal height to text column, visible on all screens */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
-            className="hidden lg:flex items-center justify-center"
+            className="flex items-center justify-center lg:justify-end"
           >
-            <div className="w-full max-w-lg [&_svg_path]:!stroke-tenki-text [&_svg_circle]:!stroke-tenki-accent [&_svg_rect]:!stroke-tenki-muted"
-              style={{ filter: 'sepia(0.15) saturate(0.8)' }}
+            <div
+              className="w-full scale-[1.8] sm:scale-[1.9] lg:scale-[1.875] origin-center [&_canvas]:!bg-transparent"
             >
               <DotLottieReact
-                src="/lottie/business workshop.lottie"
+                src="/lottie/education.lottie"
                 loop
                 autoplay
+                speed={0.25}
               />
             </div>
           </motion.div>

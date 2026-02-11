@@ -13,6 +13,9 @@ dist
 .env.local
 .env.*.local
 
+# Firebase service account
+*-firebase-adminsdk-*.json
+
 # IDE
 .vscode/*
 !.vscode/extensions.json

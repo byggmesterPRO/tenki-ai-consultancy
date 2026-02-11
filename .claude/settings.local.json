@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"Stop-Process -Name node -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 2; Remove-Item -Recurse -Force ''d:\\\\Einar\\\\Programmering2026\\\\Websites\\\\Prototyping\\\\tenki-ai-consultancy\\\\.next'' -ErrorAction SilentlyContinue; Write-Host ''DONE''\")"
+    ]
+  }
+}

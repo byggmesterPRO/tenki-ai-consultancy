@@ -1,15 +1,12 @@
-import { initializeApp, cert, type ServiceAccount } from "firebase-admin/app";
+import { initializeApp, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 import bcrypt from "bcryptjs";
-import * as dotenv from "dotenv";
+import { readFileSync } from "fs";
+import { join } from "path";
 
-dotenv.config({ path: ".env.local" });
-
-const serviceAccount: ServiceAccount = {
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-  privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
-};
+const serviceAccount = JSON.parse(
+  readFileSync(join(process.cwd(), "straight-data-firebase-adminsdk-fbsvc-00491c0fd2.json"), "utf8")
+);
 
 initializeApp({ credential: cert(serviceAccount) });
 const db = getFirestore();
@@ -18,33 +15,48 @@ async function seed() {
   console.log("Seeding database...");
 
   // Create admin user
-  const hashedPassword = await bcrypt.hash("admin123", 12);
+  const hashedPassword = await bcrypt.hash("Tenki@2026!", 12);
   const usersSnapshot = await db
     .collection("users")
-    .where("email", "==", "admin@tenki.ai")
+    .where("email", "==", "einar.k.holt@gmail.com")
     .get();
 
   let adminId: string;
   if (usersSnapshot.empty) {
     const adminRef = await db.collection("users").add({
-      email: "admin@tenki.ai",
+      email: "einar.k.holt@gmail.com",
       password: hashedPassword,
-      name: "Tenki Admin",
+      name: "Einar Holt",
       role: "admin",
       createdAt: new Date().toISOString(),
     });
     adminId = adminRef.id;
-    console.log("Created admin user: admin@tenki.ai / admin123");
+    console.log("Created admin user: einar.k.holt@gmail.com / Tenki@2026!");
   } else {
     adminId = usersSnapshot.docs[0].id;
     console.log("Admin user already exists");
   }
 
+  // Delete old posts, categories, tags
+  const oldPosts = await db.collection("posts").get();
+  for (const doc of oldPosts.docs) {
+    await doc.ref.delete();
+  }
+  const oldCats = await db.collection("categories").get();
+  for (const doc of oldCats.docs) {
+    await doc.ref.delete();
+  }
+  const oldTags = await db.collection("tags").get();
+  for (const doc of oldTags.docs) {
+    await doc.ref.delete();
+  }
+  console.log("Cleared old data");
+
   // Create categories
   const categories = [
-    { name: "AI Insights", slug: "ai-insights" },
-    { name: "Case Studies", slug: "case-studies" },
-    { name: "Industry Trends", slug: "industry-trends" },
+    { name: "Research", slug: "research" },
+    { name: "Strategy", slug: "strategy" },
+    { name: "Engineering", slug: "engineering" },
   ];
 
   const categoryIds: Record<string, string> = {};
@@ -64,11 +76,11 @@ async function seed() {
 
   // Create tags
   const tags = [
-    { name: "Machine Learning", slug: "machine-learning" },
-    { name: "Automation", slug: "automation" },
-    { name: "Strategy", slug: "strategy" },
-    { name: "Data", slug: "data" },
-    { name: "Ethics", slug: "ethics" },
+    { name: "Productivity", slug: "productivity" },
+    { name: "ROI", slug: "roi" },
+    { name: "Infrastructure", slug: "infrastructure" },
+    { name: "Knowledge Work", slug: "knowledge-work" },
+    { name: "Developer Tools", slug: "developer-tools" },
   ];
 
   const tagMap: Record<string, { id: string; name: string; slug: string }> = {};
@@ -86,203 +98,317 @@ async function seed() {
     }
   }
 
-  // Create sample blog posts
-  const now = new Date().toISOString();
+  // Create blog posts matching homepage evidence section
   const posts = [
     {
-      title: "Why Most AI Projects Fail Before They Start",
-      slug: "why-most-ai-projects-fail",
+      title: "How AI is Reshaping Knowledge Work",
+      slug: "how-ai-is-reshaping-knowledge-work",
       excerpt:
-        "The majority of enterprise AI initiatives stall not because of technology limitations, but because of misaligned expectations and inadequate preparation.",
-      content: `# Why Most AI Projects Fail Before They Start
+        "MIT researchers found that AI-assisted workers complete writing tasks 40% faster. Here's what that means for your team.",
+      content: `# How AI is Reshaping Knowledge Work
 
-The statistics are sobering: according to recent industry research, roughly 85% of AI projects fail to deliver on their initial promises. But the reasons behind these failures are rarely technical.
+A landmark study from MIT's Department of Economics has quantified something many of us have felt intuitively: AI is fundamentally changing how knowledge work gets done. Their findings — that AI-assisted workers complete writing tasks **40% faster** with **18% higher quality** — deserve a closer look.
 
-## The Expectation Gap
+## The MIT Study: What They Found
 
-Most organizations approach AI with a fundamental misconception — they see it as a product to be purchased rather than a capability to be built. This leads to:
+The researchers gave 444 college-educated professionals a series of writing tasks. Half used ChatGPT; half didn't. The results were striking:
 
-- **Unrealistic timelines**: Expecting production-ready AI in weeks, not months
-- **Misaligned goals**: Pursuing AI for its own sake rather than solving specific business problems
-- **Underestimated complexity**: Failing to account for data quality, integration, and change management
+- **40% faster completion** for AI-assisted workers
+- **18% higher quality** as rated by blind evaluators
+- The biggest gains came from **below-average performers**, who saw their output rise to match their higher-performing peers
 
-## The Data Foundation Problem
+This last point is crucial. AI isn't just making good workers better — it's raising the floor across entire teams.
 
-Before any model can be trained, you need clean, structured, and accessible data. Most enterprises discover that their data is:
+## What This Means for Your Organisation
 
-1. Siloed across departments
-2. Inconsistently formatted
-3. Missing critical metadata
-4. Subject to privacy constraints they hadn't considered
+### The Productivity Dividend
 
-## A Better Approach
+If your team of 50 knowledge workers each saves just 2 hours per week through AI assistance, that's **5,200 hours per year** returned to higher-value work. At an average loaded cost of €75/hour, that's nearly **€400,000 in recovered capacity** — without hiring a single person.
 
-At Tenki, we start every engagement with a thorough discovery phase. We spend two weeks understanding your data landscape before writing a single line of model code. This upfront investment consistently saves months of downstream iteration.
+### The Quality Multiplier
 
-> "The best time to discover your data quality issues is before you've committed to an AI timeline." — Tenki Philosophy
+The MIT study found that quality improvements were most pronounced in:
 
-## Key Takeaways
+- **First drafts**: AI helps overcome the blank page problem
+- **Structured analysis**: Organising complex information into coherent frameworks
+- **Editing and refinement**: Catching errors and improving clarity
 
-- Start with the business problem, not the technology
-- Invest in data infrastructure before model development
-- Set realistic timelines that include discovery and iteration
-- Build internal capability alongside external solutions
+### The Equity Effect
 
-The organizations that succeed with AI are those that treat it as infrastructure, not magic.`,
+Perhaps most importantly, AI tools are democratising expertise. Junior team members can produce work that previously required years of experience, while senior staff are freed to focus on strategy and relationship-building.
+
+## How We Approach This at Tenki
+
+We've seen these findings reflected across our client engagements. A Nordic professional services firm we worked with saw:
+
+| Metric | Before AI Integration | After |
+|--------|----------------------|-------|
+| Report generation time | 6 hours | 2.5 hours |
+| Client revision requests | 3.2 average | 1.4 average |
+| Employee satisfaction with tools | 2.8/5 | 4.3/5 |
+
+The key wasn't just deploying AI tools — it was redesigning workflows to leverage AI where it excels while preserving the human judgment that clients value.
+
+## Getting Started
+
+If you're considering AI integration for knowledge work, start here:
+
+1. **Audit your workflows**: Identify the 20% of tasks that consume 80% of your team's time
+2. **Start with writing and analysis**: These are the most proven AI use cases
+3. **Measure before and after**: You can't improve what you don't measure
+4. **Invest in training**: Tool access without training delivers a fraction of the potential value
+
+> "The question isn't whether AI will change knowledge work — it's whether you'll lead the change or react to it." — Tenki Philosophy
+
+## Further Reading
+
+- [MIT Economics: Experimental Evidence on the Productivity Effects of Generative AI](https://economics.mit.edu/research)
+- [MDPI Sustainability: AI Adoption and Firm-Level Productivity](https://www.mdpi.com/journal/sustainability)
+- [PwC Global AI Barometer](https://www.pwc.com/gx/en/issues/data-and-analytics/artificial-intelligence.html)
+
+The evidence is clear. The organisations that move now will compound their advantage. Those that wait will find themselves competing against teams that are 40% more productive.`,
       coverImage: null,
       published: true,
-      publishedAt: now,
+      publishedAt: "2025-01-15T09:00:00.000Z",
       authorId: adminId,
-      authorName: "Tenki Admin",
-      categoryId: categoryIds["ai-insights"],
-      categoryName: "AI Insights",
-      categorySlug: "ai-insights",
-      tags: [tagMap["strategy"], tagMap["data"]],
-      metaTitle: "Why Most AI Projects Fail Before They Start | Tenki Blog",
+      authorName: "Einar Holt",
+      categoryId: categoryIds["research"],
+      categoryName: "Research",
+      categorySlug: "research",
+      tags: [tagMap["productivity"], tagMap["knowledge-work"]],
+      metaTitle: "How AI is Reshaping Knowledge Work | Tenki Blog",
       metaDescription:
-        "85% of AI projects fail. Learn the real reasons behind enterprise AI failures and how to avoid them.",
-      createdAt: now,
-      updatedAt: now,
+        "MIT researchers found AI-assisted workers complete writing tasks 40% faster with 18% higher quality. Here's what that means for your organisation.",
+      createdAt: "2025-01-15T09:00:00.000Z",
+      updatedAt: "2025-01-15T09:00:00.000Z",
     },
     {
-      title: "The Automation Paradox: Why Doing Less Delivers More",
-      slug: "automation-paradox",
+      title: "The Real ROI of AI Integration",
+      slug: "the-real-roi-of-ai-integration",
       excerpt:
-        "Counter-intuitively, the most successful automation strategies focus on augmenting human decision-making rather than replacing it entirely.",
-      content: `# The Automation Paradox: Why Doing Less Delivers More
+        "Beyond the hype: practical frameworks for measuring the actual return on your AI investments.",
+      content: `# The Real ROI of AI Integration
 
-There's a persistent myth in enterprise technology: that the goal of automation is to remove humans from the equation entirely. Our experience across dozens of implementations tells a different story.
+Every executive considering AI investment asks the same question: *"What's the actual return?"* The answer, backed by research from MDPI Sustainability and PwC, is more compelling than most vendors will tell you — but it requires the right measurement framework.
 
-## The Full Automation Trap
+## The Numbers That Matter
 
-Companies that pursue end-to-end automation often discover that:
+### Firm-Level Productivity
 
-- Edge cases multiply faster than they can be handled
-- Customer satisfaction drops when human touch is removed
-- Employee morale suffers when people feel replaced rather than empowered
+A comprehensive study published in MDPI Sustainability found that a **1% increase in AI adoption** at the firm level correlated with a **14.2% rise in total factor productivity**. That's not a typo — the leverage effect of AI is extraordinary when implemented correctly.
 
-## The Augmentation Model
+But here's the catch: the study also found that poorly implemented AI had *negative* productivity effects. The difference between the winners and losers wasn't the technology — it was the integration strategy.
 
-The most successful AI implementations we've delivered follow a different pattern:
+### Industry-Level Impact
 
-### 1. Automate the Mundane
-Remove repetitive, low-judgment tasks that consume your team's energy without engaging their expertise.
+PwC's Global AI Barometer revealed that industries with the highest AI exposure experienced up to **4× higher productivity growth** and significantly higher revenue per employee. The sectors leading this transformation include:
 
-### 2. Augment Decisions
-Provide your team with AI-powered insights and recommendations, but keep humans in the decision loop for anything with significant consequences.
+- **Financial services**: Automated risk assessment and fraud detection
+- **Healthcare**: Diagnostic support and patient flow optimisation
+- **Professional services**: Document analysis and knowledge management
+- **Manufacturing**: Predictive maintenance and quality control
 
-### 3. Elevate the Role
-Use the freed capacity to move your team toward higher-value work: strategy, relationship building, creative problem-solving.
+### Developer Productivity
 
-## Real Results
+GitHub's research on Copilot — one of the most studied AI tools in production — found that AI code generation raised:
 
-One of our clients, a Nordic logistics company, saw these results after implementing our augmentation-first approach:
+- **Project productivity by 6.5%**
+- **Individual developer output by 5.5%**
 
-| Metric | Before | After |
-|--------|--------|-------|
-| Processing time | 4.5 hours | 45 minutes |
-| Error rate | 12% | 2.1% |
-| Employee satisfaction | 3.2/5 | 4.6/5 |
+These gains compound. A team of 20 developers gaining 6.5% productivity is equivalent to hiring 1.3 additional developers — without the recruitment, onboarding, or management overhead.
 
-The key insight: the 2.1% error rate was *lower* than full automation would have achieved, because humans caught edge cases that the model missed.
+## Why Most ROI Calculations Are Wrong
 
-## The Tenki Approach
+Traditional ROI frameworks fail with AI because they measure the wrong things:
 
-We design every system with a clear human-AI boundary. Our philosophy is simple: automate where machines excel, augment where humans excel, and never confuse the two.`,
+### What Companies Measure (Wrong)
+- Cost of AI tools vs. cost savings
+- Time saved on individual tasks
+- Number of AI features deployed
+
+### What Actually Drives ROI (Right)
+- **Decision quality improvement**: Are better decisions being made faster?
+- **Capacity unlocked**: What higher-value work are people doing with freed time?
+- **Error reduction**: What's the cost of mistakes that AI prevents?
+- **Speed to market**: How much faster can you ship, respond, adapt?
+
+## A Practical ROI Framework
+
+Here's the framework we use with Tenki clients:
+
+### 1. Baseline (Week 1-2)
+Measure current state across three dimensions:
+- **Time**: How long do key workflows take?
+- **Quality**: What's the error/revision rate?
+- **Capacity**: How much time is spent on low-value repetitive work?
+
+### 2. Pilot (Week 3-6)
+Deploy AI in one high-impact workflow with clear metrics:
+- Choose a process that's repeated frequently
+- Ensure you have enough volume for statistical significance
+- Measure the same three dimensions
+
+### 3. Calculate True ROI
+Use this formula:
+
+**True ROI = (Time Saved × Hourly Cost) + (Quality Improvement × Error Cost) + (Revenue from Unlocked Capacity) - (AI Investment)**
+
+### 4. Scale What Works (Week 7+)
+Apply learnings to additional workflows, tracking cumulative impact.
+
+## What We've Seen in Practice
+
+Across our client engagements, organisations that follow this framework typically see:
+
+- **3-6 month payback period** on AI investments
+- **200-400% ROI** within the first year
+- **Compound gains** as teams become more sophisticated AI users
+
+The organisations that struggle are those that skip the baseline measurement or try to transform everything at once.
+
+## The Bottom Line
+
+AI ROI is real, substantial, and measurable — if you approach it correctly. The research from MIT, MDPI, PwC, and GitHub all point to the same conclusion: strategic AI integration delivers transformative returns.
+
+But "strategic" is the operative word. The 14.2% productivity gain doesn't come from buying software. It comes from rethinking how work gets done.
+
+> "ROI isn't a number you calculate after deployment. It's a capability you design into the integration from day one." — Tenki Methodology`,
       coverImage: null,
       published: true,
-      publishedAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+      publishedAt: "2024-12-10T09:00:00.000Z",
       authorId: adminId,
-      authorName: "Tenki Admin",
-      categoryId: categoryIds["ai-insights"],
-      categoryName: "AI Insights",
-      categorySlug: "ai-insights",
-      tags: [tagMap["automation"], tagMap["strategy"]],
-      metaTitle: null,
-      metaDescription: null,
-      createdAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
-      updatedAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+      authorName: "Einar Holt",
+      categoryId: categoryIds["strategy"],
+      categoryName: "Strategy",
+      categorySlug: "strategy",
+      tags: [tagMap["roi"], tagMap["productivity"]],
+      metaTitle: "The Real ROI of AI Integration | Tenki Blog",
+      metaDescription:
+        "Beyond the hype: practical frameworks for measuring the actual return on your AI investments, backed by research from MIT, PwC, and MDPI.",
+      createdAt: "2024-12-10T09:00:00.000Z",
+      updatedAt: "2024-12-10T09:00:00.000Z",
     },
     {
-      title: "Building Ethical AI: A Practical Framework",
-      slug: "building-ethical-ai-framework",
+      title: "Building AI Systems That Last",
+      slug: "building-ai-systems-that-last",
       excerpt:
-        "Ethics in AI isn't just a compliance checkbox — it's a competitive advantage. Here's our practical framework for building responsible AI systems.",
-      content: `# Building Ethical AI: A Practical Framework
+        "Why sustainable AI infrastructure matters more than rapid deployment, and how to get it right from day one.",
+      content: `# Building AI Systems That Last
 
-AI ethics has moved from academic discussion to boardroom priority. But most frameworks remain abstract and difficult to implement. Here's how we make ethics actionable.
+The AI industry has a dirty secret: most production AI systems are technical debt factories. They're built fast, deployed faster, and abandoned when they inevitably break. Here's how to build AI infrastructure that scales sustainably.
 
-## The Three Pillars
+## The Deployment Trap
 
-### 1. Transparency
-Every AI system should be explainable to its stakeholders. This doesn't mean every user needs to understand neural network architectures — it means:
+GitHub's Copilot research offers an instructive parallel. The **6.5% project productivity gain** they measured didn't come from the AI alone — it came from thoughtful integration into existing developer workflows. The tool was designed to *fit* how developers work, not to replace their process.
 
-- **Decision explanations**: Users can understand why the AI made a specific recommendation
-- **Data provenance**: Clear documentation of what data trains the model
-- **Limitation disclosure**: Honest communication about what the AI cannot do
+Most enterprise AI deployments get this backwards. They build the model first and figure out integration later. The result is brittle systems that work in demos but fail in production.
 
-### 2. Fairness
-Bias in AI systems isn't a bug — it's an inherited feature of biased training data. We address this through:
+## The Three Layers of Sustainable AI
 
-- Regular bias audits across demographic dimensions
-- Diverse testing panels for model evaluation
-- Continuous monitoring of outcome distributions in production
+### Layer 1: Data Infrastructure
 
-### 3. Accountability
-When an AI system makes an error, there must be a clear chain of responsibility:
+Your AI is only as good as your data pipeline. Before writing a single line of model code, ensure you have:
 
-- Defined escalation paths for AI-related incidents
-- Regular model performance reviews
-- Human override capabilities for all automated decisions
+- **Reliable data ingestion**: Automated, monitored, and fault-tolerant
+- **Data quality checks**: Automated validation at every stage
+- **Version control for data**: Track what data trained which model
+- **Privacy compliance**: GDPR/regulatory requirements built in from the start, not bolted on later
 
-## Implementation Checklist
+### Layer 2: Model Operations (MLOps)
 
-- [ ] Document all training data sources and preprocessing steps
-- [ ] Implement model explainability tools (SHAP, LIME, or similar)
-- [ ] Conduct pre-deployment bias assessment
-- [ ] Create monitoring dashboards for fairness metrics
-- [ ] Establish incident response procedures
-- [ ] Schedule quarterly ethics reviews
+Production AI requires the same rigour as production software:
 
-## Why This Matters for Business
+- **Automated retraining pipelines**: Models degrade over time as data distributions shift
+- **A/B testing infrastructure**: Never deploy a new model without comparing it to the current one
+- **Monitoring and alerting**: Track model performance in real-time, not quarterly
+- **Rollback capability**: If a model degrades, revert to the previous version instantly
 
-Organizations with strong AI ethics practices see:
-- **Higher adoption rates**: Employees trust and use ethical AI systems more
-- **Reduced regulatory risk**: Proactive compliance reduces legal exposure
-- **Better public perception**: Customers increasingly value responsible technology
+### Layer 3: Human Integration
 
-Ethics isn't a constraint on innovation — it's the foundation of sustainable innovation.`,
+The PwC Global AI Barometer found that the **4× productivity multiplier** in high-AI-exposure industries wasn't driven by automation alone. It was driven by how well AI systems were integrated into human decision-making:
+
+- **Clear handoff points**: Where does AI output end and human judgment begin?
+- **Feedback loops**: How do human corrections improve the model over time?
+- **Training and adoption**: Do people actually use the system, or work around it?
+- **Escalation paths**: What happens when the AI is wrong?
+
+## Architecture Patterns That Scale
+
+### Pattern 1: The Recommendation Engine
+AI suggests, humans decide. This is the safest and most common pattern for initial deployments.
+
+**Example**: An AI system that flags potential contract risks for legal review, rather than auto-rejecting contracts.
+
+### Pattern 2: The Automation Pipeline
+AI handles routine cases end-to-end, with human review for exceptions.
+
+**Example**: Invoice processing where standard invoices are auto-approved, but unusual amounts or new vendors are routed for review.
+
+### Pattern 3: The Intelligence Layer
+AI enhances existing tools with contextual insights, without changing the core workflow.
+
+**Example**: A CRM that surfaces relevant case studies and talking points before a sales call, based on the prospect's industry and recent activity.
+
+## The Maintenance Equation
+
+Here's a formula we share with every client:
+
+**Annual AI Maintenance Cost = 15-25% of Initial Development Cost**
+
+If you built a €200,000 AI system, budget €30,000-50,000 per year for:
+- Model retraining and monitoring
+- Data pipeline maintenance
+- Feature updates and bug fixes
+- Infrastructure scaling
+
+Companies that don't budget for maintenance find their AI systems degrading within 6-12 months, eventually becoming more harmful than helpful.
+
+## Our Engineering Principles
+
+At Tenki, every system we build follows these principles:
+
+1. **Observable**: If you can't measure it, you can't maintain it
+2. **Modular**: Replace any component without rebuilding the whole system
+3. **Documented**: The next engineer (or your internal team) should be able to understand and maintain it
+4. **Tested**: Automated tests for data quality, model performance, and integration points
+5. **Reversible**: Every deployment can be rolled back in minutes
+
+## Getting It Right From Day One
+
+The difference between an AI system that delivers value for years and one that becomes shelfware in months comes down to engineering discipline:
+
+- **Start with monitoring**: Build observability before features
+- **Automate everything**: Manual processes are the enemy of reliability
+- **Plan for failure**: Every system will fail; design for graceful degradation
+- **Document decisions**: Future you (or your team) will thank present you
+
+> "The best AI system isn't the most sophisticated model. It's the one that's still running correctly twelve months after deployment." — Tenki Engineering
+
+Building AI that lasts isn't harder than building AI that doesn't. It just requires doing the boring things well, from the very beginning.`,
       coverImage: null,
       published: true,
-      publishedAt: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString(),
+      publishedAt: "2024-11-05T09:00:00.000Z",
       authorId: adminId,
-      authorName: "Tenki Admin",
-      categoryId: categoryIds["industry-trends"],
-      categoryName: "Industry Trends",
-      categorySlug: "industry-trends",
-      tags: [tagMap["ethics"], tagMap["strategy"], tagMap["machine-learning"]],
-      metaTitle: null,
-      metaDescription: null,
-      createdAt: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString(),
-      updatedAt: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString(),
+      authorName: "Einar Holt",
+      categoryId: categoryIds["engineering"],
+      categoryName: "Engineering",
+      categorySlug: "engineering",
+      tags: [tagMap["infrastructure"], tagMap["developer-tools"]],
+      metaTitle: "Building AI Systems That Last | Tenki Blog",
+      metaDescription:
+        "Why sustainable AI infrastructure matters more than rapid deployment, and how to get it right from day one.",
+      createdAt: "2024-11-05T09:00:00.000Z",
+      updatedAt: "2024-11-05T09:00:00.000Z",
     },
   ];
 
   for (const post of posts) {
-    const existing = await db
-      .collection("posts")
-      .where("slug", "==", post.slug)
-      .get();
-    if (existing.empty) {
-      await db.collection("posts").add(post);
-      console.log(`Created post: ${post.title}`);
-    } else {
-      console.log(`Post already exists: ${post.title}`);
-    }
+    await db.collection("posts").add(post);
+    console.log(`Created post: ${post.title}`);
   }
 
   console.log("\nSeeding complete!");
-  console.log("Admin login: admin@tenki.ai / admin123");
+  console.log("Admin login: einar.k.holt@gmail.com / Tenki@2026!");
 }
 
 seed().catch(console.error);
