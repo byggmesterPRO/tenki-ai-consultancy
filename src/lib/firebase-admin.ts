@@ -2,20 +2,33 @@ import {
   initializeApp,
   getApps,
   cert,
+  type ServiceAccount,
 } from "firebase-admin/app";
 import { getFirestore, type Firestore } from "firebase-admin/firestore";
-import { readFileSync } from "fs";
+import { readFileSync, existsSync } from "fs";
 import { join } from "path";
 
 let db: Firestore;
 
 try {
-  // Load service account from JSON file
-  const serviceAccountPath = join(process.cwd(), "straight-data-firebase-adminsdk-fbsvc-00491c0fd2.json");
-  const serviceAccount = JSON.parse(readFileSync(serviceAccountPath, "utf8"));
+  let credential;
+  const jsonPath = join(process.cwd(), "straight-data-firebase-adminsdk-fbsvc-00491c0fd2.json");
+
+  if (existsSync(jsonPath)) {
+    // Local dev: load from JSON file
+    credential = cert(JSON.parse(readFileSync(jsonPath, "utf8")));
+  } else {
+    // Production: load from env vars
+    const serviceAccount: ServiceAccount = {
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+    };
+    credential = cert(serviceAccount);
+  }
 
   if (!getApps().length) {
-    initializeApp({ credential: cert(serviceAccount) });
+    initializeApp({ credential });
   }
 
   db = getFirestore();
