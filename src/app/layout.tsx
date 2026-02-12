@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Crimson_Pro, Inter, Instrument_Serif } from "next/font/google";
 import localFont from "next/font/local";
-import SmoothScroll from "@/components/SmoothScroll";
 import favicon16 from "@/assets/favicons/favicon-16x16.png";
 import favicon32 from "@/assets/favicons/favicon-32x32.png";
 import appleTouchIcon from "@/assets/favicons/apple-touch-icon.png";
@@ -63,9 +62,7 @@ export default function RootLayout({
       className={`${crimsonPro.variable} ${inter.variable} ${instrumentSerif.variable} ${oggBold.variable}`}
     >
       <body className="font-sans antialiased text-tenki-text bg-tenki-bg selection:bg-tenki-accent/20 selection:text-tenki-text">
-        <SmoothScroll>
-          {children}
-        </SmoothScroll>
+        {children}
       </body>
     </html>
   );

@@ -29,12 +29,6 @@ const nextConfig: NextConfig = {
             chunks: "all" as const,
             enforce: true,
           },
-          motion: {
-            name: "motion",
-            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
-            priority: 30,
-            chunks: "all" as const,
-          },
           lottie: {
             name: "lottie",
             test: /[\\/]node_modules[\\/]@lottiefiles[\\/]/,
@@ -66,7 +60,6 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: [
       "lucide-react",
-      "framer-motion",
       "date-fns",
       "@lottiefiles/dotlottie-react",
     ],
