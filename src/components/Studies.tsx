@@ -7,30 +7,30 @@ import { ArrowUpRight, TrendingUp } from 'lucide-react';
 const STUDIES = [
   {
     stat: '40%',
-    label: 'faster task completion',
+    label: 'raskere oppgavegjennomføring',
     source: 'MIT Economics',
-    detail: 'Workers using AI for writing tasks completed them 40% faster with 18% higher quality.',
+    detail: 'Arbeidere som bruker AI til skriveoppgaver fullførte dem 40 % raskere med 18 % høyere kvalitet.',
     url: 'https://news.mit.edu/2023/study-finds-chatgpt-boosts-worker-productivity-writing-0714',
   },
   {
     stat: '14.2%',
-    label: 'productivity increase',
+    label: 'økning i produktivitet',
     source: 'MDPI Sustainability',
-    detail: 'A 1% increase in AI adoption correlated with a 14.2% rise in total factor productivity at the firm level.',
+    detail: 'En 1 % økning i AI-adopsjon korrelerte med en 14,2 % økning i total faktorproduktivitet på bedriftsnivå.',
     url: 'https://www.mdpi.com/2071-1050/15/11/8934',
   },
   {
     stat: '4×',
-    label: 'productivity growth',
+    label: 'produktivitetsvekst',
     source: 'PwC Global AI Barometer',
-    detail: 'Industries most exposed to AI experienced up to 4× higher productivity growth and higher revenue per employee.',
+    detail: 'Bransjer mest eksponert for AI opplevde opptil 4× høyere produktivitetsvekst og høyere inntekt per ansatt.',
     url: 'https://www.pwc.com/id/en/media-centre/press-release/2025/english/ai-linked-to-fourfold-productivity-growth-and-56-percent-wage-premium-jobs-grow-despite-automation-pwc-2025-global-ai-jobs-barometer.html',
   },
   {
     stat: '6.5%',
-    label: 'developer output uplift',
+    label: 'økning i utviklerresultat',
     source: 'GitHub Copilot Research',
-    detail: 'AI code generation raised project productivity by 6.5% and individual developer output by 5.5%.',
+    detail: 'AI-kodegenerering økte prosjektproduktiviteten med 6,5 % og individuell utviklerytelse med 5,5 %.',
     url: 'https://arxiv.org/abs/2410.02091',
   },
 ];
@@ -43,14 +43,14 @@ const Studies: React.FC = () => {
           <div className="flex items-center gap-3 mb-4">
             <TrendingUp className="w-5 h-5 text-tenki-accent" strokeWidth={1.5} />
             <span className="text-tenki-accent font-sans uppercase tracking-widest text-xs font-semibold">
-              The Evidence
+              Bevisene
             </span>
           </div>
           <h2 className="font-serif text-4xl md:text-5xl text-tenki-text mb-6">
-            AI works. Here&apos;s the proof.
+            AI fungerer. Her er bevisene.
           </h2>
           <p className="font-sans text-tenki-muted text-lg max-w-2xl mb-16">
-            Independent research from leading institutions confirms what our clients experience firsthand.
+            Uavhengig forskning fra ledende institusjoner bekrefter det våre kunder opplever direkte.
           </p>
         </Reveal>
 

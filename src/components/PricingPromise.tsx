@@ -18,18 +18,18 @@ const PricingPromise: React.FC = () => {
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight mb-8">
-                  You don&apos;t pay if you don&apos;t save.
+                  Du betaler ikke hvis du ikke sparer.
                 </h2>
 
                 <p className="font-sans text-stone-400 text-lg md:text-xl leading-relaxed mb-12 max-w-2xl">
-                  Our goal is to make you money, not take it. We&apos;re so confident in our work that we tie our fees to your results. No measurable savings? No charge.
+                  Vårt mål er å tjene dere penger. Vi er så sikre på arbeidet vårt at vi knytter honoraret til dine resultater. Ingen målbare besparelser? Ingen kostnad.
                 </p>
 
                 <Link
                   href="/contact"
                   className="group inline-flex items-center gap-3 bg-tenki-accent text-white px-8 py-4 rounded-full font-sans text-sm tracking-wide transition-all hover:bg-tenki-accent/90 hover:shadow-lg"
                 >
-                  Start a Risk-Free Conversation
+                  Start en risikofri samtale
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>

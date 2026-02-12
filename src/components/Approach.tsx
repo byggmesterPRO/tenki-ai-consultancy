@@ -4,10 +4,10 @@ import React from 'react';
 import { Reveal } from '@/components/ui/Reveal';
 
 const steps = [
-  { id: '01', title: 'Discovery', desc: 'We audit your current data landscape and identify high-impact bottlenecks.' },
-  { id: '02', title: 'Strategy', desc: 'We design a roadmap prioritizing ROI and minimal operational disruption.' },
-  { id: '03', title: 'Implementation', desc: 'Our engineers deploy secure, scalable models tailored to your infrastructure.' },
-  { id: '04', title: 'Enablement', desc: 'We train your team to own the system, ensuring long-term independence.' },
+  { id: '01', title: 'Discovery', desc: 'Vi reviderer ditt nåværende datalandskap og identifiserer flaskehalser med stor innvirkning.' },
+  { id: '02', title: 'Strategy', desc: 'Vi designer et veikart som prioriterer avkastning og minimal operasjonell forstyrrelse.' },
+  { id: '03', title: 'Implementation', desc: 'Våre ingeniører distribuerer sikre, skalerbare modeller tilpasset din infrastruktur.' },
+  { id: '04', title: 'Enablement', desc: 'Vi trener teamet ditt til å eie systemet, og sikrer langsiktig uavhengighet.' },
 ];
 
 const Approach: React.FC = () => {
@@ -25,7 +25,7 @@ const Approach: React.FC = () => {
           </Reveal>
           <Reveal delay={0.2}>
             <p className="font-sans text-stone-400 max-w-md">
-              A disciplined, four-phase framework designed to mitigate risk and maximize value delivery.
+              Et disiplinert rammeverk i fire faser, designet for å redusere risiko og maksimere verdileveranse.
             </p>
           </Reveal>
         </div>

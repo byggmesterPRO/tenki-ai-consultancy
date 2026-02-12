@@ -6,7 +6,7 @@ import { getPosts } from '@/lib/db';
 
 function formatDate(dateStr: string) {
   const date = new Date(dateStr);
-  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  return date.toLocaleDateString('nb-NO', { month: 'short', year: 'numeric' });
 }
 
 const BlogPreview = async () => {
@@ -21,7 +21,7 @@ const BlogPreview = async () => {
               <div className="flex items-center gap-3 mb-4">
                 <Newspaper className="w-5 h-5 text-tenki-accent" strokeWidth={1.5} />
                 <span className="text-tenki-accent font-sans uppercase tracking-widest text-xs font-semibold">
-                  From the Blog
+                  Fra bloggen
                 </span>
               </div>
               <h2 className="font-serif text-4xl md:text-5xl text-tenki-text">
@@ -32,7 +32,7 @@ const BlogPreview = async () => {
               href="/blog"
               className="hidden md:flex items-center gap-2 text-sm font-sans text-tenki-text hover:text-tenki-accent transition-colors group"
             >
-              View all posts
+              Se alle innlegg
               <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
@@ -63,7 +63,7 @@ const BlogPreview = async () => {
               href="/blog"
               className="inline-flex items-center gap-2 text-sm font-sans text-tenki-text hover:text-tenki-accent transition-colors"
             >
-              View all posts
+              Se alle innlegg
               <ArrowRight size={14} />
             </Link>
           </div>

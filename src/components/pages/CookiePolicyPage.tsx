@@ -1,84 +1,65 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Reveal } from '@/components/ui/Reveal';
-
-const fade = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.9, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] as const },
-  }),
-};
 
 const CookiePolicyPage: React.FC = () => {
   return (
     <div className="pt-32 pb-24">
       <section className="container mx-auto px-6 md:px-12 mb-16">
-        <motion.p
-          initial="hidden" animate="visible" custom={0} variants={fade}
-          className="text-tenki-accent font-sans uppercase tracking-widest text-sm mb-6 font-medium"
-        >
-          Legal
-        </motion.p>
-        <motion.h1
-          initial="hidden" animate="visible" custom={1} variants={fade}
-          className="font-serif text-5xl md:text-7xl leading-[1.1] text-tenki-text mb-8"
-        >
+        <p className="hero-animate text-tenki-accent font-sans uppercase tracking-widest text-sm mb-6 font-medium" style={{ animationDelay: '0s' }}>
+          Juridisk
+        </p>
+        <h1 className="hero-animate font-serif text-5xl md:text-7xl leading-[1.1] text-tenki-text mb-8" style={{ animationDelay: '0.15s' }}>
           Cookie Policy
-        </motion.h1>
-        <motion.p
-          initial="hidden" animate="visible" custom={2} variants={fade}
-          className="font-sans text-tenki-muted text-sm"
-        >
-          Last updated: January 2025
-        </motion.p>
+        </h1>
+        <p className="hero-animate font-sans text-tenki-muted text-sm" style={{ animationDelay: '0.3s' }}>
+          Sist oppdatert: Januar 2025
+        </p>
       </section>
 
       <section className="container mx-auto px-6 md:px-12 max-w-3xl">
         <div className="prose prose-stone max-w-none space-y-12">
           {[
             {
-              title: '1. What Are Cookies',
-              content: 'Cookies are small text files that are placed on your device (computer, smartphone, or tablet) when you visit a website. They are widely used to make websites work more efficiently, provide a better user experience, and supply information to the website owners. Cookies can be "persistent" or "session" cookies. Persistent cookies remain on your device after you close your browser, while session cookies are deleted when you close your browser.',
+              title: '1. Hva er informasjonskapsler',
+              content: 'Informasjonskapsler er små tekstfiler som plasseres på enheten din (datamaskin, smarttelefon eller nettbrett) når du besøker et nettsted. De brukes i stor utstrekning for å få nettsteder til å fungere mer effektivt, gi en bedre brukeropplevelse og levere informasjon til nettstedets eiere. Informasjonskapsler kan være "vedvarende" eller "sesjonbaserte". Vedvarende kapsler forblir på enheten din etter at du lukker nettleseren, mens sesjonskapsler slettes når du lukker nettleseren.',
             },
             {
-              title: '2. How We Use Cookies',
-              content: 'Tenki uses cookies on tenki.no to enhance your browsing experience, understand how visitors interact with our website, and improve our services. We use cookies to remember your preferences, analyze website traffic and performance, and ensure the security of our platform. We do not use cookies to identify you personally or track your activities across other websites without your explicit consent.',
+              title: '2. Hvordan vi bruker informasjonskapsler',
+              content: 'Tenki bruker informasjonskapsler på tenki.no for å forbedre din nettleseropplevelse, forstå hvordan besøkende samhandler med nettstedet vårt og forbedre våre tjenester. Vi bruker informasjonskapsler for å huske dine preferanser, analysere nettstedstrafikk og ytelse, og sikre plattformens sikkerhet. Vi bruker ikke informasjonskapsler til å identifisere deg personlig eller spore aktivitetene dine på andre nettsteder uten ditt uttrykkelige samtykke.',
             },
             {
-              title: '3. Types of Cookies We Use',
-              content: 'We use several categories of cookies on our website. Essential cookies are necessary for the website to function properly and cannot be disabled. These include cookies that enable you to navigate the site and use its features. Analytics cookies help us understand how visitors use our website by collecting anonymous information about pages visited, time spent on the site, and any errors encountered. Preference cookies remember your settings and choices to provide a more personalized experience on future visits.',
+              title: '3. Typer informasjonskapsler vi bruker',
+              content: 'Vi bruker flere kategorier av informasjonskapsler på nettstedet vårt. Nødvendige kapsler er påkrevd for at nettstedet skal fungere korrekt og kan ikke deaktiveres. Disse inkluderer kapsler som gjør det mulig å navigere på nettstedet og bruke dets funksjoner. Analysekapsler hjelper oss å forstå hvordan besøkende bruker nettstedet vårt ved å samle inn anonym informasjon om besøkte sider, tid brukt på nettstedet og eventuelle feil. Preferansekapsler husker dine innstillinger og valg for å gi en mer personlig opplevelse ved fremtidige besøk.',
             },
             {
-              title: '4. Essential Cookies',
-              content: 'Essential cookies are strictly necessary to provide you with services available through our website and to use some of its features. These cookies enable core functionality such as security, network management, and accessibility. Without these cookies, services you have requested cannot be provided. Essential cookies do not require your consent and are automatically placed when you visit our site.',
+              title: '4. Nødvendige informasjonskapsler',
+              content: 'Nødvendige informasjonskapsler er strengt nødvendige for å gi deg tjenester tilgjengelig gjennom nettstedet vårt og for å bruke noen av funksjonene. Disse kapslene muliggjør kjernefunksjonalitet som sikkerhet, nettverksadministrasjon og tilgjengelighet. Uten disse kapslene kan ikke tjenester du har bedt om leveres. Nødvendige kapsler krever ikke ditt samtykke og plasseres automatisk når du besøker nettstedet vårt.',
             },
             {
-              title: '5. Analytics Cookies',
-              content: 'With your consent, we use analytics cookies to collect information about how visitors use tenki.no. These cookies collect anonymous data such as the number of visitors, where visitors have come from, and the pages they visit. We use this information to improve our website, understand user behavior, and measure the effectiveness of our content. Analytics cookies do not collect personal information that directly identifies you.',
+              title: '5. Analysekapsler',
+              content: 'Med ditt samtykke bruker vi analysekapsler for å samle inn informasjon om hvordan besøkende bruker tenki.no. Disse kapslene samler inn anonyme data som antall besøkende, hvor besøkende kommer fra og hvilke sider de besøker. Vi bruker denne informasjonen til å forbedre nettstedet vårt, forstå brukeratferd og måle effektiviteten av innholdet vårt. Analysekapsler samler ikke inn personopplysninger som direkte identifiserer deg.',
             },
             {
-              title: '6. Preference Cookies',
-              content: 'Preference cookies, also known as functionality cookies, allow our website to remember choices you make and provide enhanced, more personalized features. These may include your language preference, region, or display settings. The information these cookies collect may be anonymized, and they cannot track your browsing activity on other websites. These cookies require your consent before being placed on your device.',
+              title: '6. Preferansekapsler',
+              content: 'Preferansekapsler, også kjent som funksjonalitetskapsler, gjør at nettstedet vårt kan huske valg du tar og gi forbedrede, mer personlige funksjoner. Disse kan inkludere dine språkpreferanser, region eller visningsinnstillinger. Informasjonen disse kapslene samler inn kan være anonymisert, og de kan ikke spore nettleseraktiviteten din på andre nettsteder. Disse kapslene krever ditt samtykke før de plasseres på enheten din.',
             },
             {
-              title: '7. Third-Party Cookies',
-              content: 'Some cookies on tenki.no may be set by third-party services that appear on our pages. These third-party cookies are subject to the respective privacy and cookie policies of those external services. We carefully select our third-party providers and ensure they comply with applicable data protection regulations, including GDPR. We do not control these third-party cookies and recommend reviewing the privacy policies of these services.',
+              title: '7. Tredjepartskapsler',
+              content: 'Noen informasjonskapsler på tenki.no kan settes av tredjepartstjenester som vises på sidene våre. Disse tredjepartskapslene er underlagt de respektive personvern- og informasjonskapselretningslinjene til disse eksterne tjenestene. Vi velger våre tredjepartsleverandører nøye og sikrer at de overholder gjeldende personvernregelverk, inkludert GDPR. Vi kontrollerer ikke disse tredjepartskapslene og anbefaler å gjennomgå personvernretningslinjene til disse tjenestene.',
             },
             {
-              title: '8. How to Manage Cookies',
-              content: 'Most web browsers allow you to control cookies through their settings. You can set your browser to refuse cookies or delete certain cookies. Please note that if you disable essential cookies, some features of tenki.no may not function properly. Browser settings typically allow you to see what cookies are stored, delete them individually or all at once, and block cookies from specific or all websites. Consult your browser\'s help documentation for specific instructions.',
+              title: '8. Hvordan administrere informasjonskapsler',
+              content: 'De fleste nettlesere lar deg kontrollere informasjonskapsler gjennom innstillingene. Du kan stille inn nettleseren til å avvise kapsler eller slette bestemte kapsler. Vær oppmerksom på at hvis du deaktiverer nødvendige kapsler, kan noen funksjoner på tenki.no slutte å fungere korrekt. Nettleserinnstillinger lar deg vanligvis se hvilke kapsler som er lagret, slette dem enkeltvis eller alle på en gang, og blokkere kapsler fra spesifikke eller alle nettsteder. Se nettleserens hjelpedokumentasjon for spesifikke instruksjoner.',
             },
             {
-              title: '9. Cookie Consent',
-              content: 'When you first visit tenki.no, you will be presented with a cookie consent banner explaining our use of cookies. You can choose to accept or decline non-essential cookies. You may withdraw or modify your consent at any time through the cookie settings available on our website. Your consent choices are stored in a cookie so we can remember your preferences on future visits.',
+              title: '9. Samtykke for informasjonskapsler',
+              content: 'Når du første gang besøker tenki.no, vil du bli presentert med et samtykkebanner som forklarer vår bruk av informasjonskapsler. Du kan velge å godta eller avvise ikke-nødvendige kapsler. Du kan trekke tilbake eller endre samtykket når som helst gjennom innstillingene for informasjonskapsler på nettstedet vårt. Dine samtykkevalg lagres i en informasjonskapsel slik at vi kan huske preferansene dine ved fremtidige besøk.',
             },
             {
-              title: '10. Contact Us',
-              content: 'If you have any questions about our use of cookies or this Cookie Policy, please contact us at hei@tenki.no. We are committed to transparency and will be happy to provide additional information about how we use cookies on our website. For general privacy inquiries, please refer to our Privacy Policy or reach out to us directly.',
+              title: '10. Kontakt oss',
+              content: 'Har du spørsmål om vår bruk av informasjonskapsler eller denne retningslinjen, ta kontakt med oss på hei@tenki.no. Vi er forpliktet til åpenhet og hjelper gjerne med ytterligere informasjon om hvordan vi bruker informasjonskapsler på nettstedet vårt. For generelle personvernhenvendelser, se vår personvernerklæring eller ta direkte kontakt med oss.',
             },
           ].map((section, i) => (
             <Reveal key={section.title} delay={Math.min(i * 0.05, 0.3)}>

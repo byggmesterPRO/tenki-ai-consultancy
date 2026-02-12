@@ -38,9 +38,9 @@ const oggBold = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Tenki | AI Consultancy",
+  title: "Tenki | AI-rådgivning",
   description:
-    "Unlocking intelligence. Tenki helps forward-thinking companies build resilience through practical AI integration.",
+    "Unlocking intelligence. Tenki hjelper fremtidsrettede selskaper med å bygge motstandsdyktighet gjennom praktisk AI-integrasjon.",
   icons: {
     icon: [
       { url: favicon16.src, sizes: "16x16", type: "image/png" },
@@ -59,7 +59,7 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
+      lang="no"
       className={`${crimsonPro.variable} ${inter.variable} ${instrumentSerif.variable} ${oggBold.variable}`}
     >
       <body className="font-sans antialiased text-tenki-text bg-tenki-bg selection:bg-tenki-accent/20 selection:text-tenki-text">

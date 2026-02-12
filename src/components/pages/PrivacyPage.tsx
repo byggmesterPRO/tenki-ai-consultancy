@@ -1,84 +1,65 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Reveal } from '@/components/ui/Reveal';
-
-const fade = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.9, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] as const },
-  }),
-};
 
 const PrivacyPage: React.FC = () => {
   return (
     <div className="pt-32 pb-24">
       <section className="container mx-auto px-6 md:px-12 mb-16">
-        <motion.p
-          initial="hidden" animate="visible" custom={0} variants={fade}
-          className="text-tenki-accent font-sans uppercase tracking-widest text-sm mb-6 font-medium"
-        >
-          Legal
-        </motion.p>
-        <motion.h1
-          initial="hidden" animate="visible" custom={1} variants={fade}
-          className="font-serif text-5xl md:text-7xl leading-[1.1] text-tenki-text mb-8"
-        >
-          Privacy Policy
-        </motion.h1>
-        <motion.p
-          initial="hidden" animate="visible" custom={2} variants={fade}
-          className="font-sans text-tenki-muted text-sm"
-        >
-          Last updated: January 2025
-        </motion.p>
+        <p className="hero-animate text-tenki-accent font-sans uppercase tracking-widest text-sm mb-6 font-medium" style={{ animationDelay: '0s' }}>
+          Juridisk
+        </p>
+        <h1 className="hero-animate font-serif text-5xl md:text-7xl leading-[1.1] text-tenki-text mb-8" style={{ animationDelay: '0.15s' }}>
+          Personvernerklæring
+        </h1>
+        <p className="hero-animate font-sans text-tenki-muted text-sm" style={{ animationDelay: '0.3s' }}>
+          Sist oppdatert: Januar 2025
+        </p>
       </section>
 
       <section className="container mx-auto px-6 md:px-12 max-w-3xl">
         <div className="prose prose-stone max-w-none space-y-12">
           {[
             {
-              title: '1. Introduction',
-              content: 'Tenki Consulting ("we", "us", "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or engage our services.',
+              title: '1. Innledning',
+              content: 'Tenki Consulting (\u00ABvi\u00BB, \u00ABoss\u00BB, \u00ABv\u00E5r\u00BB) er forpliktet til \u00E5 beskytte ditt personvern. Denne personvernerkl\u00E6ringen forklarer hvordan vi samler inn, bruker, utleverer og beskytter informasjonen din n\u00E5r du bes\u00F8ker nettsiden v\u00E5r eller benytter v\u00E5re tjenester.',
             },
             {
-              title: '2. Information We Collect',
-              content: 'We may collect personal information that you voluntarily provide, including your name, email address, company name, phone number, and any details you include in your messages through our contact form. We also automatically collect certain technical data such as IP address, browser type, and pages visited.',
+              title: '2. Informasjon vi samler inn',
+              content: 'Vi kan samle inn personopplysninger som du frivillig oppgir, inkludert navn, e-postadresse, bedriftsnavn, telefonnummer og eventuelle detaljer du inkluderer i meldinger gjennom kontaktskjemaet v\u00E5rt. Vi samler ogs\u00E5 automatisk inn visse tekniske data som IP-adresse, nettlesertype og bes\u00F8kte sider.',
             },
             {
-              title: '3. How We Use Your Information',
-              content: 'We use collected information to respond to inquiries, provide our consulting services, improve our website, send relevant communications (with your consent), and comply with legal obligations. We do not sell your personal information to third parties.',
+              title: '3. Hvordan vi bruker informasjonen din',
+              content: 'Vi bruker innsamlet informasjon til \u00E5 svare p\u00E5 henvendelser, levere v\u00E5re r\u00E5dgivningstjenester, forbedre nettsiden v\u00E5r, sende relevante kommunikasjoner (med ditt samtykke) og overholde lovp\u00E5lagte forpliktelser. Vi selger ikke dine personopplysninger til tredjeparter.',
             },
             {
-              title: '4. Data Storage & Security',
-              content: 'Your data is stored on secure servers within the European Union. We employ industry-standard encryption, access controls, and monitoring to protect your information. Despite our efforts, no method of electronic transmission or storage is 100% secure.',
+              title: '4. Datalagring og sikkerhet',
+              content: 'Dine data lagres p\u00E5 sikre servere innenfor EU. Vi benytter bransjestandard kryptering, tilgangskontroller og overv\u00E5king for \u00E5 beskytte informasjonen din. Til tross for v\u00E5re anstrengelser er ingen metode for elektronisk overf\u00F8ring eller lagring 100 % sikker.',
             },
             {
-              title: '5. Cookies',
-              content: 'Our website uses essential cookies to ensure proper functionality. We may also use analytics cookies (with your consent) to understand how visitors interact with our site. You can manage cookie preferences through your browser settings.',
+              title: '5. Informasjonskapsler',
+              content: 'Nettsiden v\u00E5r bruker n\u00F8dvendige informasjonskapsler for \u00E5 sikre riktig funksjonalitet. Vi kan ogs\u00E5 bruke analysekapsler (med ditt samtykke) for \u00E5 forst\u00E5 hvordan bes\u00F8kende samhandler med nettstedet v\u00E5rt. Du kan administrere innstillinger for informasjonskapsler gjennom nettleseren din.',
             },
             {
-              title: '6. Your Rights (GDPR)',
-              content: 'Under the General Data Protection Regulation, you have the right to access, rectify, erase, restrict processing, and port your personal data. You also have the right to withdraw consent and lodge a complaint with a supervisory authority. To exercise these rights, contact us at privacy@tenki.ai.',
+              title: '6. Dine rettigheter (GDPR)',
+              content: 'I henhold til personvernforordningen (GDPR) har du rett til innsyn, retting, sletting, begrensning av behandling og dataportabilitet. Du har ogs\u00E5 rett til \u00E5 trekke tilbake samtykke og klage til en tilsynsmyndighet. For \u00E5 ut\u00F8ve disse rettighetene, kontakt oss p\u00E5 hei@tenki.no.',
             },
             {
-              title: '7. Third-Party Services',
-              content: 'We may use third-party analytics and communication tools. These services have their own privacy policies governing the use of your information. We ensure all third-party processors comply with GDPR requirements.',
+              title: '7. Tredjepartstjenester',
+              content: 'Vi kan bruke tredjeparts analyse- og kommunikasjonsverkt\u00F8y. Disse tjenestene har egne personvernerkl\u00E6ringer som regulerer bruken av din informasjon. Vi sikrer at alle tredjepartsbehandlere overholder GDPR-kravene.',
             },
             {
-              title: '8. Data Retention',
-              content: 'We retain personal data only as long as necessary for the purposes outlined in this policy, or as required by law. Contact form submissions are retained for 24 months unless you request earlier deletion.',
+              title: '8. Dataoppbevaring',
+              content: 'Vi oppbevarer personopplysninger kun s\u00E5 lenge det er n\u00F8dvendig for form\u00E5lene beskrevet i denne erkl\u00E6ringen, eller s\u00E5 lenge loven krever det. Innsendte kontaktskjemaer oppbevares i 24 m\u00E5neder med mindre du ber om tidligere sletting.',
             },
             {
-              title: '9. Changes to This Policy',
-              content: 'We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date. We encourage you to review this policy periodically.',
+              title: '9. Endringer i denne erkl\u00E6ringen',
+              content: 'Vi kan oppdatere denne personvernerkl\u00E6ringen fra tid til annen. Endringer publiseres p\u00E5 denne siden med oppdatert revisjonsdato. Vi oppfordrer deg til \u00E5 gjennomg\u00E5 denne erkl\u00E6ringen jevnlig.',
             },
             {
-              title: '10. Contact',
-              content: 'For privacy-related inquiries, please contact our Data Protection Officer at privacy@tenki.ai or write to: Tenki Consulting, Friedrichstraße 12, 10117 Berlin, Germany.',
+              title: '10. Kontakt',
+              content: 'For personvernrelaterte henvendelser, kontakt oss p\u00E5 hei@tenki.no.',
             },
           ].map((section, i) => (
             <Reveal key={section.title} delay={Math.min(i * 0.05, 0.3)}>

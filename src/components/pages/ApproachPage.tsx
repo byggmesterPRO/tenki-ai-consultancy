@@ -1,70 +1,60 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Reveal } from '@/components/ui/Reveal';
 import { ArrowRight } from 'lucide-react';
-
-const fade = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.9, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] as const },
-  }),
-};
 
 const steps = [
   {
     id: '01',
     title: 'Discovery',
-    subtitle: 'Weeks 1-2',
-    description: 'We audit your current data landscape and identify high-impact bottlenecks.',
+    subtitle: 'Uke 1–2',
+    description: 'Vi reviderer ditt nåværende datalandskap og identifiserer flaskehalser med stor innvirkning.',
     details: [
-      'Stakeholder interviews across departments',
-      'Current technology stack assessment',
-      'Data quality and availability audit',
-      'Competitive landscape analysis',
-      'Quick-win identification report',
+      'Interessentintervjuer på tvers av avdelinger',
+      'Vurdering av nåværende teknologistabel',
+      'Revisjon av datakvalitet og tilgjengelighet',
+      'Analyse av konkurranselandskapet',
+      'Rapport over raske gevinster',
     ],
   },
   {
     id: '02',
     title: 'Strategy',
-    subtitle: 'Weeks 3-4',
-    description: 'We design a roadmap prioritizing ROI and minimal operational disruption.',
+    subtitle: 'Uke 3–4',
+    description: 'Vi designer et veikart som prioriterer avkastning og minimal operasjonell forstyrrelse.',
     details: [
-      'Prioritized opportunity matrix',
-      'Technical architecture blueprint',
-      'Risk assessment and mitigation plan',
-      'Resource allocation and timeline',
-      'Executive-ready business case',
+      'Prioritert mulighetsmatrise',
+      'Teknisk arkitekturtegning',
+      'Risikovurdering og tiltaksplan',
+      'Ressursallokering og tidsplan',
+      'Forretningscase klart for ledelsen',
     ],
   },
   {
     id: '03',
     title: 'Implementation',
-    subtitle: 'Weeks 5-12',
-    description: 'Our engineers deploy secure, scalable models tailored to your infrastructure.',
+    subtitle: 'Uke 5–12',
+    description: 'Våre ingeniører distribuerer sikre, skalerbare modeller tilpasset din infrastruktur.',
     details: [
-      'Agile sprint-based development',
-      'Continuous integration and testing',
-      'Security-first deployment pipeline',
-      'Stakeholder demos every two weeks',
-      'Performance benchmarking against targets',
+      'Smidig sprintbasert utvikling',
+      'Kontinuerlig integrasjon og testing',
+      'Sikkerhet-først distribusjonspipeline',
+      'Interessentdemoer annenhver uke',
+      'Ytelsesmåling mot fastsatte mål',
     ],
   },
   {
     id: '04',
     title: 'Enablement',
-    subtitle: 'Weeks 12-16',
-    description: 'We train your team to own the system, ensuring long-term independence.',
+    subtitle: 'Uke 12–16',
+    description: 'Vi trener teamet ditt til å eie systemet, og sikrer langsiktig uavhengighet.',
     details: [
-      'Comprehensive team training workshops',
-      'Technical documentation and runbooks',
-      'Handoff to internal champions',
-      '90-day post-launch support window',
-      'Quarterly check-ins for continuous improvement',
+      'Omfattende opplæringsworkshops for teamet',
+      'Teknisk dokumentasjon og driftshåndbøker',
+      'Overlevering til interne nøkkelpersoner',
+      '90 dagers støtte etter lansering',
+      'Kvartalsvise oppfølgingsmøter for kontinuerlig forbedring',
     ],
   },
 ];
@@ -74,24 +64,24 @@ const ApproachPage: React.FC = () => {
     <div className="pt-32 pb-24">
       {/* Hero Section */}
       <section className="container mx-auto px-6 md:px-12 mb-24 md:mb-32">
-        <motion.p
-          initial="hidden" animate="visible" custom={0} variants={fade}
-          className="text-tenki-accent font-sans uppercase tracking-widest text-sm mb-6 font-medium"
+        <p
+          className="hero-animate text-tenki-accent font-sans uppercase tracking-widest text-sm mb-6 font-medium"
+          style={{ animationDelay: '0s' }}
         >
-          Our Method
-        </motion.p>
-        <motion.h1
-          initial="hidden" animate="visible" custom={1} variants={fade}
-          className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.1] text-tenki-text mb-8 max-w-4xl"
+          Vår metode
+        </p>
+        <h1
+          className="hero-animate font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.1] text-tenki-text mb-8 max-w-4xl"
+          style={{ animationDelay: '0.15s' }}
         >
           The Tenki Method.
-        </motion.h1>
-        <motion.p
-          initial="hidden" animate="visible" custom={2} variants={fade}
-          className="font-sans text-lg md:text-xl text-tenki-muted max-w-2xl leading-relaxed"
+        </h1>
+        <p
+          className="hero-animate font-sans text-lg md:text-xl text-tenki-muted max-w-2xl leading-relaxed"
+          style={{ animationDelay: '0.3s' }}
         >
-          A disciplined, four-phase framework designed to mitigate risk and maximize value delivery. Every engagement follows this proven path from insight to independence.
-        </motion.p>
+          Et disiplinert rammeverk i fire faser, designet for å redusere risiko og maksimere verdileveranse. Hvert oppdrag følger denne velprøvde veien fra innsikt til uavhengighet.
+        </p>
       </section>
 
       {/* Timeline Steps */}
@@ -149,10 +139,10 @@ const ApproachPage: React.FC = () => {
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center">
             {[
-              { stat: '94%', label: 'Adoption rate in Q1 post-launch' },
-              { stat: '3.2x', label: 'Average ROI within 12 months' },
-              { stat: '40+', label: 'Enterprise engagements delivered' },
-              { stat: '<6mo', label: 'Average time to measurable impact' },
+              { stat: '94%', label: 'Adopsjonsrate i Q1 etter lansering' },
+              { stat: '3.2x', label: 'Gjennomsnittlig avkastning innen 12 måneder' },
+              { stat: '40+', label: 'Bedriftsoppdrag levert' },
+              { stat: '<6mnd', label: 'Gjennomsnittlig tid til målbar effekt' },
             ].map((item, i) => (
               <Reveal key={item.stat} delay={i * 0.1}>
                 <div>
@@ -172,13 +162,13 @@ const ApproachPage: React.FC = () => {
             See the method in action.
           </h2>
           <p className="text-tenki-muted text-lg max-w-xl mx-auto mb-12">
-            Every company's path is unique. Let's map yours together.
+            Hver bedrifts vei er unik. La oss kartlegge din sammen.
           </p>
           <a
             href="/contact"
             className="group inline-flex items-center gap-3 bg-tenki-text text-white px-8 py-4 rounded-full font-sans text-sm tracking-wide transition-all hover:bg-tenki-accent hover:shadow-lg"
           >
-            Book a Discovery Session
+            Bestill en uforpliktende samtale
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </a>
         </Reveal>

@@ -1,50 +1,40 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Reveal } from '@/components/ui/Reveal';
 import { ArrowRight } from 'lucide-react';
-
-const fade = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.9, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] as const },
-  }),
-};
 
 const PhilosophyPage: React.FC = () => {
   return (
     <div className="pt-32 pb-24">
       {/* Hero Section */}
       <section className="container mx-auto px-6 md:px-12 mb-24 md:mb-32">
-        <motion.p
-          initial="hidden" animate="visible" custom={0} variants={fade}
-          className="text-tenki-accent font-sans uppercase tracking-widest text-sm mb-6 font-medium"
+        <p
+          className="hero-animate text-tenki-accent font-sans uppercase tracking-widest text-sm mb-6 font-medium"
+          style={{ animationDelay: '0s' }}
         >
-          Our Philosophy
-        </motion.p>
-        <motion.h1
-          initial="hidden" animate="visible" custom={1} variants={fade}
-          className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.1] text-tenki-text mb-8 max-w-4xl"
+          Vår filosofi
+        </p>
+        <h1
+          className="hero-animate font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.1] text-tenki-text mb-8 max-w-4xl"
+          style={{ animationDelay: '0.15s' }}
         >
-          Beyond the <br className="hidden md:block" />
-          <span className="italic text-tenki-accent">Algorithm.</span>
-        </motion.h1>
-        <motion.p
-          initial="hidden" animate="visible" custom={2} variants={fade}
-          className="font-sans text-lg md:text-xl text-tenki-muted max-w-2xl leading-relaxed"
+          Utover <br className="hidden md:block" />
+          <span className="italic text-tenki-accent">Algoritmen.</span>
+        </h1>
+        <p
+          className="hero-animate font-sans text-lg md:text-xl text-tenki-muted max-w-2xl leading-relaxed"
+          style={{ animationDelay: '0.3s' }}
         >
-          We believe Artificial Intelligence is not a magic wand, but a layer of infrastructure. Like electricity or the internet, its value lies not in its existence, but in its application.
-        </motion.p>
+          Vi tror kunstig intelligens ikke er en tryllestav, men et lag med infrastruktur. Som elektrisitet eller internett ligger verdien ikke i dens eksistens, men i dens anvendelse.
+        </p>
       </section>
 
       {/* Core Beliefs */}
       <section className="bg-white py-24 md:py-32">
         <div className="container mx-auto px-6 md:px-12">
           <Reveal>
-            <span className="text-tenki-accent font-sans uppercase tracking-widest text-xs font-semibold block mb-4">Core Beliefs</span>
+            <span className="text-tenki-accent font-sans uppercase tracking-widest text-xs font-semibold block mb-4">Kjerneverdier</span>
             <h2 className="font-serif text-4xl md:text-5xl text-tenki-text mb-16">
               What drives every decision.
             </h2>
@@ -54,15 +44,15 @@ const PhilosophyPage: React.FC = () => {
             {[
               {
                 title: 'Human-Centric',
-                body: 'Automation should liberate, not replace. We design systems that remove repetitive drudgery, allowing your human talent to focus on strategy, creativity, and connection. Every workflow we build starts with the people who will use it.',
+                body: 'Automatisering skal frigjøre, ikke erstatte. Vi designer systemer som fjerner repetitivt slit, slik at dine menneskelige talenter kan fokusere på strategi, kreativitet og relasjoner. Hver arbeidsflyt vi bygger starter med menneskene som skal bruke den.',
               },
               {
                 title: 'Transparent Systems',
-                body: 'Black boxes are a business risk. We prioritize explainable AI models and clear documentation, ensuring you always understand how your decisions are being supported. No hidden layers, no unexplainable outputs.',
+                body: 'Svarte bokser er en forretningsrisiko. Vi prioriterer forklarbar AI og tydelig dokumentasjon, slik at du alltid forstår hvordan beslutningene dine støttes. Ingen skjulte lag, ingen uforklarlige resultater.',
               },
               {
                 title: 'Sustainable Innovation',
-                body: 'We build for the long term. Every solution is designed to scale gracefully, adapt to changing requirements, and remain maintainable by your own team long after our engagement ends.',
+                body: 'Vi bygger for lang sikt. Hver løsning er designet for å skalere elegant, tilpasse seg endrede krav og forbli vedlikeholdbar av ditt eget team lenge etter at oppdraget er avsluttet.',
               },
             ].map((item, i) => (
               <Reveal key={item.title} delay={i * 0.15}>
@@ -86,19 +76,19 @@ const PhilosophyPage: React.FC = () => {
               </h2>
               <div className="w-12 h-[2px] bg-tenki-text/10 mb-6"></div>
               <p className="font-sans text-sm tracking-widest uppercase text-tenki-muted">
-                Established 2025
+                Etablert 2025
               </p>
             </Reveal>
           </div>
           <div className="md:col-span-7 space-y-8">
             <Reveal delay={0.2}>
               <p className="font-serif text-2xl md:text-3xl leading-relaxed text-tenki-text">
-                Most consultancies sell AI as a product. We treat it as a craft. Our team combines deep technical expertise with genuine business understanding to deliver outcomes, not just outputs.
+                De fleste konsulentselskaper selger AI som et produkt. Vi behandler det som et håndverk. Teamet vårt kombinerer dyp teknisk ekspertise med genuin forretningsforståelse for å levere resultater, ikke bare leveranser.
               </p>
             </Reveal>
             <Reveal delay={0.4}>
               <p className="text-tenki-muted leading-relaxed text-lg">
-                We immerse ourselves in your organization. We sit with your teams, understand their daily challenges, and only then design solutions that feel natural rather than imposed. This is why our implementations have a 94% adoption rate within the first quarter.
+                Vi fordyper oss i din organisasjon. Vi sitter med teamene dine, forstår deres daglige utfordringer, og designer først da løsninger som føles naturlige fremfor påtvungne. Derfor har våre implementeringer en adopsjonsrate på 94 % i første kvartal.
               </p>
             </Reveal>
           </div>
@@ -110,14 +100,14 @@ const PhilosophyPage: React.FC = () => {
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <Reveal>
-            <h2 className="font-serif text-4xl md:text-5xl text-stone-50 mb-20">Our Values</h2>
+            <h2 className="font-serif text-4xl md:text-5xl text-stone-50 mb-20">Våre verdier</h2>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {[
-              { num: '01', title: 'Integrity Over Speed', desc: 'We will always recommend the right solution, even if it means a smaller engagement. Trust is the foundation of lasting partnerships.' },
-              { num: '02', title: 'Clarity Over Complexity', desc: 'We communicate in plain language. If we cannot explain our solution simply, we have not understood the problem well enough.' },
-              { num: '03', title: 'Ownership Over Dependency', desc: 'We train your teams to own their AI systems. Our goal is your independence, not your recurring invoices.' },
-              { num: '04', title: 'Evidence Over Hype', desc: 'Every recommendation is grounded in data and proven methodologies. We never deploy technology for its own sake.' },
+              { num: '01', title: 'Integrity Over Speed', desc: 'Vi anbefaler alltid den riktige løsningen, selv om det betyr et mindre oppdrag. Tillit er grunnlaget for varige partnerskap.' },
+              { num: '02', title: 'Clarity Over Complexity', desc: 'Vi kommuniserer på et klart språk. Hvis vi ikke kan forklare løsningen vår enkelt, har vi ikke forstått problemet godt nok.' },
+              { num: '03', title: 'Ownership Over Dependency', desc: 'Vi trener teamene dine til å eie sine AI-systemer. Vårt mål er din uavhengighet, ikke dine gjentakende fakturaer.' },
+              { num: '04', title: 'Evidence Over Hype', desc: 'Hver anbefaling er forankret i data og velprøvde metoder. Vi implementerer aldri teknologi for teknologiens skyld.' },
             ].map((v, i) => (
               <Reveal key={v.num} delay={i * 0.12}>
                 <div className="border-t border-stone-700 pt-8 group">
@@ -138,13 +128,13 @@ const PhilosophyPage: React.FC = () => {
             Ready to work differently?
           </h2>
           <p className="text-tenki-muted text-lg max-w-xl mx-auto mb-12">
-            Let us show you how AI can enhance your team's capabilities without disrupting what already works.
+            La oss vise deg hvordan AI kan styrke teamets evner uten å forstyrre det som allerede fungerer.
           </p>
           <a
             href="/contact"
             className="group inline-flex items-center gap-3 bg-tenki-text text-white px-8 py-4 rounded-full font-sans text-sm tracking-wide transition-all hover:bg-tenki-accent hover:shadow-lg"
           >
-            Start the Conversation
+            Start samtalen
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </a>
         </Reveal>

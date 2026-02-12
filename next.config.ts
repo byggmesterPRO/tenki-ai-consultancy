@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
   compress: true,
-  webpack(config) {
+  webpack(config, { isServer }) {
     config.module.rules.push(
       {
         test: /\.lottie$/,
@@ -16,6 +16,42 @@ const nextConfig: NextConfig = {
         type: "asset/resource",
       },
     );
+
+    if (!isServer) {
+      config.optimization.splitChunks = {
+        ...config.optimization.splitChunks,
+        cacheGroups: {
+          ...config.optimization.splitChunks?.cacheGroups,
+          framework: {
+            name: "framework",
+            test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
+            priority: 40,
+            chunks: "all" as const,
+            enforce: true,
+          },
+          motion: {
+            name: "motion",
+            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+            priority: 30,
+            chunks: "all" as const,
+          },
+          lottie: {
+            name: "lottie",
+            test: /[\\/]node_modules[\\/]@lottiefiles[\\/]/,
+            priority: 30,
+            chunks: "async" as const,
+          },
+          lib: {
+            name: "lib",
+            test: /[\\/]node_modules[\\/]/,
+            priority: 10,
+            chunks: "async" as const,
+            minSize: 20000,
+          },
+        },
+      };
+    }
+
     return config;
   },
   images: {
@@ -32,6 +68,7 @@ const nextConfig: NextConfig = {
       "lucide-react",
       "framer-motion",
       "date-fns",
+      "@lottiefiles/dotlottie-react",
     ],
   },
   async headers() {
@@ -57,6 +94,12 @@ const nextConfig: NextConfig = {
         source: "/fonts/(.*)",
         headers: [
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
+      {
+        source: "/_next/image(.*)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" },
         ],
       },
     ];

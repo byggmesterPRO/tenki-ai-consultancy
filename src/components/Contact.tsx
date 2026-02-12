@@ -27,7 +27,7 @@ const Contact: React.FC = () => {
                 Ready to optimize?
               </h2>
               <p className="font-sans text-tenki-muted text-lg mb-12 max-w-md">
-                Schedule a discovery call. We'll discuss your current bottlenecks and outline where AI can deliver the highest ROI.
+                Bestill en uforpliktende samtale. Vi diskuterer dine nåværende flaskehalser og kartlegger hvor AI kan gi høyest avkastning.
               </p>
 
               <div className="space-y-4 font-sans text-tenki-text">
@@ -42,13 +42,13 @@ const Contact: React.FC = () => {
             {formState === 'success' ? (
               <Reveal>
                 <div className="h-full flex flex-col justify-center items-center text-center min-h-[400px]">
-                  <h3 className="font-serif text-3xl text-tenki-text mb-4">Message Sent</h3>
-                  <p className="text-tenki-muted">Thank you. One of our strategists will be in touch within 24 hours.</p>
+                  <h3 className="font-serif text-3xl text-tenki-text mb-4">Melding sendt</h3>
+                  <p className="text-tenki-muted">Takk. En av våre rådgivere tar kontakt innen 24 timer.</p>
                   <button
                     onClick={() => setFormState('idle')}
                     className="mt-8 text-tenki-accent underline hover:text-tenki-text transition-colors"
                   >
-                    Send another message
+                    Send en ny melding
                   </button>
                 </div>
               </Reveal>
@@ -56,39 +56,39 @@ const Contact: React.FC = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <Reveal delay={0.1}>
                   <div className="space-y-2">
-                    <label htmlFor="name" className="text-xs uppercase tracking-widest text-tenki-muted">Name</label>
+                    <label htmlFor="name" className="text-xs uppercase tracking-widest text-tenki-muted">Navn</label>
                     <input
                       type="text"
                       id="name"
                       required
                       className="w-full bg-stone-50 border-b border-stone-200 p-4 focus:outline-none focus:border-tenki-accent transition-colors text-tenki-text"
-                      placeholder="John Doe"
+                      placeholder="Ola Nordmann"
                     />
                   </div>
                 </Reveal>
 
                 <Reveal delay={0.2}>
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-xs uppercase tracking-widest text-tenki-muted">Work Email</label>
+                    <label htmlFor="email" className="text-xs uppercase tracking-widest text-tenki-muted">Jobb-e-post</label>
                     <input
                       type="email"
                       id="email"
                       required
                       className="w-full bg-stone-50 border-b border-stone-200 p-4 focus:outline-none focus:border-tenki-accent transition-colors text-tenki-text"
-                      placeholder="john@company.com"
+                      placeholder="ola@bedrift.no"
                     />
                   </div>
                 </Reveal>
 
                 <Reveal delay={0.3}>
                   <div className="space-y-2">
-                    <label htmlFor="message" className="text-xs uppercase tracking-widest text-tenki-muted">Challenge / Goal</label>
+                    <label htmlFor="message" className="text-xs uppercase tracking-widest text-tenki-muted">Utfordring / Mål</label>
                     <textarea
                       id="message"
                       required
                       rows={4}
                       className="w-full bg-stone-50 border-b border-stone-200 p-4 focus:outline-none focus:border-tenki-accent transition-colors text-tenki-text resize-none"
-                      placeholder="We are looking to automate our customer intake process..."
+                      placeholder="Vi ønsker å automatisere vår kundemottaksprosess..."
                     ></textarea>
                   </div>
                 </Reveal>
@@ -103,7 +103,7 @@ const Contact: React.FC = () => {
                       <Loader2 className="animate-spin" />
                     ) : (
                       <>
-                        Request Consultation
+                        Be om konsultasjon
                         <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                       </>
                     )}

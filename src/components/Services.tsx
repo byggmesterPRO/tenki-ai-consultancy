@@ -10,7 +10,7 @@ const Services: React.FC = () => {
       <div className="container mx-auto px-6 md:px-12">
         <Reveal>
           <div className="mb-20 max-w-2xl">
-            <span className="text-tenki-accent font-sans uppercase tracking-widest text-xs font-semibold block mb-4">Our Expertise</span>
+            <span className="text-tenki-accent font-sans uppercase tracking-widest text-xs font-semibold block mb-4">Vår ekspertise</span>
             <h2 className="font-serif text-4xl md:text-5xl text-tenki-text">
               Precision tools for <br /> modern challenges.
             </h2>

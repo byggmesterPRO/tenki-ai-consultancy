@@ -26,37 +26,37 @@ const Footer: React.FC = () => {
               <span className="font-ogg text-2xl font-bold text-stone-100">tenki</span>
             </Link>
             <p className="text-stone-400 text-sm leading-relaxed mb-6 max-w-xs">
-              Unlocking intelligence. We help forward-thinking companies build resilience through practical AI integration.
+              Unlocking intelligence. Vi hjelper fremtidsrettede selskaper med å bygge motstandsdyktighet gjennom praktisk AI-integrasjon.
             </p>
-            <p className="text-stone-500 text-xs">Established 2025</p>
+            <p className="text-stone-500 text-xs">Etablert 2025</p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h4 className="text-stone-200 font-medium text-sm uppercase tracking-widest mb-6">Navigate</h4>
+            <h4 className="text-stone-200 font-medium text-sm uppercase tracking-widest mb-6">Navigasjon</h4>
             <ul className="space-y-3 text-sm">
-              <li><Link href="/philosophy" className="hover:text-tenki-accent transition-colors">Philosophy</Link></li>
-              <li><Link href="/services" className="hover:text-tenki-accent transition-colors">Services</Link></li>
-              <li><Link href="/approach" className="hover:text-tenki-accent transition-colors">Our Approach</Link></li>
-              <li><Link href="/projects" className="hover:text-tenki-accent transition-colors">Projects</Link></li>
-              <li><Link href="/blog" className="hover:text-tenki-accent transition-colors">Blog</Link></li>
-              <li><Link href="/contact" className="hover:text-tenki-accent transition-colors">Contact</Link></li>
+              <li><Link href="/philosophy" className="hover:text-tenki-accent transition-colors">Filosofi</Link></li>
+              <li><Link href="/services" className="hover:text-tenki-accent transition-colors">Tjenester</Link></li>
+              <li><Link href="/approach" className="hover:text-tenki-accent transition-colors">Vår tilnærming</Link></li>
+              <li><Link href="/projects" className="hover:text-tenki-accent transition-colors">Prosjekter</Link></li>
+              <li><Link href="/blog" className="hover:text-tenki-accent transition-colors">Blogg</Link></li>
+              <li><Link href="/contact" className="hover:text-tenki-accent transition-colors">Kontakt</Link></li>
             </ul>
           </div>
 
           {/* Legal */}
           <div>
-            <h4 className="text-stone-200 font-medium text-sm uppercase tracking-widest mb-6">Legal</h4>
+            <h4 className="text-stone-200 font-medium text-sm uppercase tracking-widest mb-6">Juridisk</h4>
             <ul className="space-y-3 text-sm">
-              <li><Link href="/privacy" className="hover:text-tenki-accent transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="hover:text-tenki-accent transition-colors">Terms of Service</Link></li>
-              <li><Link href="/cookies" className="hover:text-tenki-accent transition-colors">Cookie Policy</Link></li>
+              <li><Link href="/privacy" className="hover:text-tenki-accent transition-colors">Personvernerklæring</Link></li>
+              <li><Link href="/terms" className="hover:text-tenki-accent transition-colors">Vilkår for bruk</Link></li>
+              <li><Link href="/cookies" className="hover:text-tenki-accent transition-colors">Informasjonskapsler</Link></li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="text-stone-200 font-medium text-sm uppercase tracking-widest mb-6">Get in Touch</h4>
+            <h4 className="text-stone-200 font-medium text-sm uppercase tracking-widest mb-6">Ta kontakt</h4>
             <ul className="space-y-4 text-sm">
               <li>
                 <a href="mailto:hei@tenki.no" className="flex items-center gap-3 hover:text-tenki-accent transition-colors">
@@ -85,9 +85,9 @@ const Footer: React.FC = () => {
       {/* Bottom Bar */}
       <div className="border-t border-stone-800">
         <div className="container mx-auto px-6 md:px-12 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-stone-500">
-          <p>&copy; {new Date().getFullYear()} Tenki. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Tenki. Alle rettigheter forbeholdt.</p>
           <div className="flex items-center gap-4">
-            <p>Norway</p>
+            <p>Norge</p>
             <Link href="/admin/login" className="hover:text-stone-400 transition-colors">Admin</Link>
           </div>
         </div>

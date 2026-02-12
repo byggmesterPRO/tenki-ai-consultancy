@@ -1,84 +1,59 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Reveal } from "@/components/ui/Reveal";
-
-const fade = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
-    title: "Intelligent Document Processing System",
-    client: "Financial Services",
+    title: "Sanntids klasse- og timeplanadministrasjon",
+    client: "EdTech",
+    link: "https://klasseplanen.no/",
     description:
-      "Automated the extraction and classification of financial documents using custom-trained NLP models, reducing manual processing time and improving accuracy.",
-    technologies: ["GPT-4", "Azure Document Intelligence", "Python", "FastAPI"],
+      "Utviklet en svært responsiv webapplikasjon for timeplanstyring, elevadministrasjon og undervisningsplanlegging, optimalisert for hastighet, brukervennlighet og skalerbarhet på tvers av utdanningsinstitusjoner.",
+    technologies: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Tailwind CSS"],
     results: [
-      "92% reduction in document processing time",
-      "99.3% accuracy in data extraction",
-      "ROI achieved in 4 months",
+      "Lynraske sidelastinger med server-side rendering",
+      "Mobil-først, fullt responsivt UI for daglig lærerbruk",
+      "Skalerbar arkitektur klargjort for flerskoleutbredelse",
     ],
   },
   {
-    title: "AI-Powered Customer Support Platform",
-    client: "E-commerce",
+    title: "Høyytelses netthandelsplattform for lokal mathandel",
+    client: "E-Commerce",
+    link: "https://viltbutikken.no/",
     description:
-      "Developed an intelligent chatbot system integrated with existing customer service infrastructure, handling tier-1 inquiries and seamlessly escalating complex issues.",
-    technologies: ["Claude", "LangChain", "React", "Node.js"],
+      "Bygget en moderne, ytelsesoptimalisert netthandelsløsning med fokus på rask utsjekking, responsivt design og sømløs produktadministrasjon.",
+    technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Tailwind CSS"],
     results: [
-      "65% reduction in support ticket volume",
-      "24/7 instant response capability",
-      "Customer satisfaction score increased to 4.7/5",
+      "Forbedret konverteringsrate gjennom rask, friksjonsløs UX",
+      "Fullt responsiv butikkfront på alle enheter",
+      "Skalerbar betalings- og bestillingsinfrastruktur",
     ],
   },
   {
-    title: "Predictive Maintenance Analytics",
-    client: "Manufacturing",
+    title: "Moderne studie- og produktivitetsplattform",
+    client: "EdTech",
+    link: "https://studdy.no/",
     description:
-      "Built a machine learning pipeline to predict equipment failures before they occur, enabling proactive maintenance scheduling and reducing costly downtime.",
-    technologies: ["TensorFlow", "IoT Integration", "PostgreSQL", "Grafana"],
+      "Laget en responsiv, app-lignende læringsplattform designet for å hjelpe studenter med å strukturere studieøkter, spore fremgang og få tilgang til læringsverktøy på tvers av enheter.",
+    technologies: ["Vite", "React", "TypeScript", "IndexedDB", "Tailwind CSS"],
     results: [
-      "40% reduction in unplanned downtime",
-      "30% decrease in maintenance costs",
-      "Extended equipment lifespan by 18 months",
+      "Umiddelbar UI-respons med klient-side rendering",
+      "Offline-vennlig design for fleksibel studering",
+      "Høyt engasjement gjennom rent, distraksjonsfritt UX",
     ],
   },
   {
-    title: "Content Generation & SEO Optimization",
-    client: "Digital Marketing Agency",
+    title: "Høyytelses personlig nettsted og portefølje",
+    client: "Personlig merkevare / Portefølje",
+    link: "https://eirikfjelde.no/",
     description:
-      "Created an AI-assisted content workflow that generates high-quality, SEO-optimized articles and social media content while maintaining brand voice consistency.",
-    technologies: ["GPT-4", "Anthropic Claude", "Next.js", "Pinecone"],
+      "Designet og bygget et lynraskt personlig nettsted med fokus på ytelse, tilgjengelighet og moderne frontend-beste praksis.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
     results: [
-      "5x increase in content output",
-      "210% improvement in organic traffic",
-      "Content production costs reduced by 60%",
-    ],
-  },
-  {
-    title: "Automated Legal Contract Analysis",
-    client: "Legal Tech",
-    description:
-      "Designed an AI system to review, analyze, and flag potential issues in legal contracts, accelerating the due diligence process while maintaining high accuracy standards.",
-    technologies: ["Claude", "Azure OpenAI", "TypeScript", "MongoDB"],
-    results: [
-      "85% faster contract review process",
-      "100% clause identification accuracy",
-      "Expanded client capacity by 300%",
-    ],
-  },
-  {
-    title: "Personalized Learning Platform",
-    client: "Education Technology",
-    description:
-      "Implemented an adaptive learning system that personalizes educational content and pacing based on individual student performance and learning patterns.",
-    technologies: ["OpenAI", "Python", "React Native", "PostgreSQL"],
-    results: [
-      "45% improvement in learning outcomes",
-      "80% student engagement rate",
-      "Scalable to 50,000+ concurrent users",
+      "Under ett sekund lastetid globalt",
+      "Fullt responsivt og tilgjengelighetsoptimalisert",
+      "SEO-optimalisert arkitektur med moderne verktøy",
     ],
   },
 ];
@@ -90,26 +65,17 @@ export default function ProjectsPage() {
         {/* Header Section */}
         <Reveal>
           <div className="text-center mb-16">
-            <motion.p
-              variants={fade}
-              className="text-tenki-accent font-sans text-sm uppercase tracking-wider mb-4"
-            >
-              Projects
-            </motion.p>
-            <motion.h1
-              variants={fade}
-              className="text-tenki-text font-serif text-5xl md:text-6xl lg:text-7xl mb-6"
-            >
-              Our Work
-            </motion.h1>
-            <motion.p
-              variants={fade}
-              className="text-tenki-muted font-sans text-lg md:text-xl max-w-3xl mx-auto"
-            >
-              Discover how we've helped organizations across industries harness
-              the power of AI to solve complex challenges and drive measurable
-              results.
-            </motion.p>
+            <p className="text-tenki-accent font-sans text-sm uppercase tracking-wider mb-4">
+              Prosjekter
+            </p>
+            <h1 className="text-tenki-text font-serif text-5xl md:text-6xl lg:text-7xl mb-6">
+              Våre prosjekter
+            </h1>
+            <p className="text-tenki-muted font-sans text-lg md:text-xl max-w-3xl mx-auto">
+              Oppdag hvordan vi har hjulpet organisasjoner på tvers av bransjer
+              med å utnytte teknologi for å løse komplekse utfordringer og levere
+              målbare resultater.
+            </p>
           </div>
         </Reveal>
 
@@ -117,8 +83,7 @@ export default function ProjectsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <Reveal key={index}>
-              <motion.div
-                variants={fade}
+              <div
                 className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-8 hover:bg-white/10 transition-colors duration-300"
               >
                 {/* Client Badge */}
@@ -141,7 +106,7 @@ export default function ProjectsPage() {
                 {/* Technologies */}
                 <div className="mb-6">
                   <h3 className="text-tenki-text font-sans text-sm uppercase tracking-wider mb-3">
-                    Technologies
+                    Teknologier
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, techIndex) => (
@@ -156,9 +121,9 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* Results */}
-                <div>
+                <div className="mb-6">
                   <h3 className="text-tenki-text font-sans text-sm uppercase tracking-wider mb-3">
-                    Results & Impact
+                    Resultater
                   </h3>
                   <ul className="space-y-2">
                     {project.results.map((result, resultIndex) => (
@@ -172,31 +137,41 @@ export default function ProjectsPage() {
                     ))}
                   </ul>
                 </div>
-              </motion.div>
+
+                {/* Project Link */}
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-tenki-accent font-sans text-sm hover:underline transition-colors duration-300"
+                >
+                  Besøk prosjektet
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
             </Reveal>
           ))}
         </div>
 
         {/* CTA Section */}
         <Reveal>
-          <motion.div
-            variants={fade}
+          <div
             className="text-center mt-20 p-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg"
           >
             <h2 className="text-tenki-text font-serif text-4xl mb-4">
-              Ready to Start Your Project?
+              Klar for å starte ditt prosjekt?
             </h2>
             <p className="text-tenki-muted font-sans text-lg mb-8 max-w-2xl mx-auto">
-              Let's discuss how we can help you leverage AI to transform your
-              business operations and achieve measurable results.
+              La oss diskutere hvordan vi kan hjelpe deg med å utnytte teknologi
+              for å transformere din virksomhet.
             </p>
             <a
               href="/contact"
               className="inline-block bg-tenki-accent hover:bg-tenki-accent/90 text-tenki-bg font-sans font-semibold px-8 py-4 rounded-lg transition-colors duration-300"
             >
-              Get in Touch
+              Ta kontakt
             </a>
-          </motion.div>
+          </div>
         </Reveal>
       </div>
     </div>
